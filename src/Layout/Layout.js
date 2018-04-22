@@ -7,10 +7,13 @@ const Layout = (props) => {
 	return (
 		<Aux>
 			<Toolbar 
-				viewHandler={props.viewHandler}
 				activeView = {props.activeView}
+				viewHandler={props.viewHandler}
 			/>
-			<Backdrop />
+			<Backdrop 
+				activeBackdrop = {props.activeBackdrop} 
+				backdropAuthor = {props.backdropAuthor}
+			/>
 		</Aux>
 	);
 };
