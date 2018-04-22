@@ -5,6 +5,7 @@
   "dependencies": {
     "gulp-cli": "^2.0.1",
     "gulp-sass": "^4.0.1",
+    "node-sass": "^4.8.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
