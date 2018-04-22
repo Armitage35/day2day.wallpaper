@@ -1,14 +1,20 @@
 import React from 'react';
 import Toolbar from './Toolbar/Toolbar.js';
+import Backdrop from './Backdrop/Backdrop.js';
+import Aux from '../hoc/Aux.js';
 
 const Layout = (props) => {
 	return (
-		<div>
+		<Aux>
 			<Toolbar 
-				viewHandler={props.viewHandler}
 				activeView = {props.activeView}
+				viewHandler={props.viewHandler}
 			/>
-		</div>
+			<Backdrop 
+				activeBackdrop = {props.activeBackdrop} 
+				backdropAuthor = {props.backdropAuthor}
+			/>
+		</Aux>
 	);
 };
 
