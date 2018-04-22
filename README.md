@@ -21,4 +21,4 @@ We're all about open source! Thus you can find our apps on Github.
 
 Day2Day is a project of Adrien D. Ahlqvist (Armitage).
 
-Made with :heart: in Montreal
+Made with :heart: in beautiful Montreal
