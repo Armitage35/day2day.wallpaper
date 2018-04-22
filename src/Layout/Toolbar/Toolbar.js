@@ -12,7 +12,7 @@ const Toolbar = (props) => {
 			}
 		};
 		
-		return options.map((options, index) => <p 
+		return options.map(options => <p 
 			key={options.toLowerCase()} 
 			id={options.toLowerCase()}
 			className={checkActive(options)} 
