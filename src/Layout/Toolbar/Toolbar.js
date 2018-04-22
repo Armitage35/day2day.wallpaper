@@ -2,11 +2,26 @@ import React from 'react';
 import './Toolbar.css';
 
 const Toolbar = (props) => {
+
+	const displayOptions = () => {
+		let options = ['Explore', 'Collections', 'Gallery'];
+		
+		const checkActive = (option) => {
+			if (option.toLowerCase() === props.activeView) {
+				return 'active';
+			}
+		};
+		
+		return options.map((options, index) => <p 
+			key={options.toLowerCase()} 
+			id={options.toLowerCase()}
+			className={checkActive(options)} 
+			onClick={props.viewHandler}>{options}</p>);
+	};
+	
 	return (
 		<div className='toolbar'>
-			<p className='active'>Explore</p>
-			<p>Collections</p>
-			<p>Gallery</p>
+			{displayOptions()}
 		</div>
 	);
 };

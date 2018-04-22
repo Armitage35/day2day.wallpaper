@@ -4,7 +4,10 @@ import Toolbar from './Toolbar/Toolbar.js';
 const Layout = (props) => {
 	return (
 		<div>
-			<Toolbar />
+			<Toolbar 
+				viewHandler={props.viewHandler}
+				activeView = {props.activeView}
+			/>
 		</div>
 	);
 };

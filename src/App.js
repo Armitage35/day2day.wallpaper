@@ -10,10 +10,19 @@ class App extends Component {
 		activePicture: ''
 	}
 	
+	activeViewHandler = (event) => {
+		let activeView = this.state.activeView;
+		activeView = event.target.id;
+		this.setState({activeView: activeView});
+	}
+	
 	render() {
 		return (
 			<div className="App">
-				<Layout />
+				<Layout 
+					viewHandler = {this.activeViewHandler}
+					activeView = {this.state.activeView}
+				/>
 			</div>
 		);
 	}
