@@ -1,7 +1,8 @@
 import React from 'react';
-import Toolbar from './Toolbar/Toolbar.js';
-import Backdrop from './Backdrop/Backdrop.js';
 import Aux from '../hoc/Aux.js';
+import Backdrop from './Backdrop/Backdrop.js';
+import Toolbar from './Toolbar/Toolbar.js';
+import Pages from './Pages/Pages.js';
 
 const Layout = (props) => {
 	return (
@@ -14,6 +15,7 @@ const Layout = (props) => {
 				activeBackdrop = {props.activeBackdrop} 
 				backdropAuthor = {props.backdropAuthor}
 			/>
+			<Pages />
 		</Aux>
 	);
 };
