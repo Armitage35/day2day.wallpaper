@@ -1,9 +1,14 @@
 import React from 'react';
-import Collections from './Collections/Collections.js';
+import Aux from '../../hoc/Aux.js';
+// import Collections from './Collections/Collections.js';
+import Gallery from './Gallery/Gallery.js';
 
 const Pages = () => {
 	return (
-		<Collections />
+		<Aux>
+			{/* <Collections /> */}
+			<Gallery />
+		</Aux>
 	);
 };
 
