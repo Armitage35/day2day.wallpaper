@@ -17,7 +17,9 @@ const Collection = () => {
 	
 	return (
 		<div className='collection'>
-			<div style={collectionCoverStyle} className='coverCollection'> </div>
+			<div style={collectionCoverStyle} className='coverCollection'> 
+				<p className='collectionTile'>Unsplash Top 25: Editor's</p> 
+			</div>
 			<div style={collectionThumbnail1} className='collectionThumbnailTop'> </div>
 			<div style={collectionThumbnail2} className='collectionThumbnailBottom'> </div>
 		</div>
