@@ -1,6 +1,6 @@
 import React from 'react';
 import Aux from '../hoc/Aux.js';
-// import Backdrop from './Backdrop/Backdrop.js';
+import Backdrop from './Backdrop/Backdrop.js';
 import Toolbar from './Toolbar/Toolbar.js';
 import Pages from './Pages/Pages.js';
 
@@ -9,13 +9,15 @@ const Layout = (props) => {
 		<Aux>
 			<Toolbar 
 				activeView = {props.activeView}
-				viewHandler={props.viewHandler}
+				viewHandler = {props.viewHandler}
 			/>
-			{/* <Backdrop 
+			<Backdrop 
 				activeBackdrop = {props.activeBackdrop} 
-				backdropAuthor = {props.backdropAuthor}
-			/> */}
-			<Pages />
+			 	backdropAuthor = {props.backdropAuthor}
+			/>
+			<Pages 
+				activeView = {props.activeView}
+			/>
 		</Aux>
 	);
 };
