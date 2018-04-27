@@ -2,7 +2,7 @@ import React from 'react';
 import './Collection.css';
 
 
-const Collection = () => {
+const Collection = (props) => {
 	const collectionCoverStyle = {
 		backgroundImage: 'url(https://images.unsplash.com/photo-1512526825361-0918f33a9fca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6f07dacb0ea13892f056f96625e3bbb2&auto=format&fit=crop&w=1336&q=80)',
 	};
@@ -16,9 +16,9 @@ const Collection = () => {
 	};
 	
 	return (
-		<div className='collection'>
+		<div className='Collection'>
 			<div style={collectionCoverStyle} className='coverCollection'> 
-				<p className='collectionTile'>Unsplash Top 25: Editor's</p> 
+				<p className='collectionTile'>{props.collectionName}</p> 
 			</div>
 			<div style={collectionThumbnailTop} className='collectionThumbnailTop'> </div>
 			<div style={collectionThumbnailBottom} className='collectionThumbnailBottom'> </div>
