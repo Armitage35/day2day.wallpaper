@@ -6,11 +6,14 @@ var request = require("request");
 
 class Collections extends Component {
 
-	collectionName = 'yolo';
+	state = {
+		collectionName: '',
+		cover: '',
+		topThumbnail: '',
+		bottomThumbnail: ''
+	};
 
 	callUnsplashCollection = () => {
-		let collectionName;
-		
 		const options = {
 			method: 'GET',
 			url: 'https://api.unsplash.com/collections/featured',
@@ -19,14 +22,22 @@ class Collections extends Component {
 
 		request(options, function(error, response, body) {
 			if (error) throw new Error(error);
-			
-			collectionName = JSON.parse(body)[0].title;
-			console.log(collectionName);
 			collectionHandler(JSON.parse(body));
 		});
-		
+
 		const collectionHandler = (unsplashResponse) => {
 			console.log(unsplashResponse);
+			let collectionName = unsplashResponse[0].title,
+				cover = unsplashResponse[0].cover_photo.urls.small,
+				topThumbnail = unsplashResponse[0].preview_photos[1].urls.thumb,
+				bottomThumbnail = unsplashResponse[0].preview_photos[2].urls.thumb;
+
+			this.setState({
+				collectionName: collectionName,
+				cover: cover,
+				topThumbnail: topThumbnail,
+				bottomThumbnail: bottomThumbnail
+			});
 		};
 	}
 
@@ -40,7 +51,10 @@ class Collections extends Component {
 			<div className='Collections'>
 			<div className='firstRow'>
 				<Collection 
-					collectionName = {this.collectionName}
+					collectionName = {this.state.collectionName}
+					cover = {this.state.cover}
+					topThumbnail = {this.state.topThumbnail}
+					bottomThumbnail = {this.state.bottomThumbnail}
 				/>
 			</div>
 			<div className='secondRow'>
