@@ -10,7 +10,8 @@ class Collections extends Component {
 		collectionName: '',
 		cover: '',
 		topThumbnail: '',
-		bottomThumbnail: ''
+		bottomThumbnail: '',
+		ready: false
 	};
 
 	callUnsplashCollection = () => {
@@ -36,31 +37,47 @@ class Collections extends Component {
 				collectionName: collectionName,
 				cover: cover,
 				topThumbnail: topThumbnail,
-				bottomThumbnail: bottomThumbnail
+				bottomThumbnail: bottomThumbnail,
+				ready: true
 			});
 		};
 	}
 
+	Collections = () => {
+		return(
+			<div className='Collections'>
+				<div className='firstRow'>
+					<Collection 
+						collectionName = {this.state.collectionName}
+						cover = {this.state.cover}
+						topThumbnail = {this.state.topThumbnail}
+						bottomThumbnail = {this.state.bottomThumbnail}
+					/>
+				</div>
+				<div className='secondRow'>
+					<Collection 
+						collectionName = {this.state.collectionName}
+						cover = {this.state.cover}
+						topThumbnail = {this.state.topThumbnail}
+						bottomThumbnail = {this.state.bottomThumbnail}
+					/>
+				</div>
+			</div>
+		)
+	};
 
 	componentDidMount() {
 		this.callUnsplashCollection();
 	}
 
 	render() {
-		return (
-			<div className='Collections'>
-			<div className='firstRow'>
-				<Collection 
-					collectionName = {this.state.collectionName}
-					cover = {this.state.cover}
-					topThumbnail = {this.state.topThumbnail}
-					bottomThumbnail = {this.state.bottomThumbnail}
-				/>
-			</div>
-			<div className='secondRow'>
-			</div>
-		</div>
-		);
+		if (this.state.ready === true) {
+			return (
+				this.Collections()
+			);
+		} else {
+			return <p>YOLO</p>;
+		}
 	}
 };
 
