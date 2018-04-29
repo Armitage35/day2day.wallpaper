@@ -38,18 +38,14 @@ class Collections extends Component {
 
 	displayCollectionsHandler = (unsplashResponse) => {
 		this.ready = unsplashResponse.map((collection, index) => {
-			let rowNumber;
-			index <= 4 ? rowNumber = 'firstRow' : rowNumber = 'secondRow';
 			return (
-				<div className={rowNumber}>
-					<Collection
-						collectionName = {collection.title}
-						cover = {collection.cover_photo.urls.small}
-						topThumbnail = {collection.preview_photos[1].urls.thumb}
-						bottomThumbnail = {collection.preview_photos[2].urls.thumb}
-						key = {index}
-					/>
-				</div>
+				<Collection
+					key = {index}
+					collectionName = {collection.title}
+					cover = {collection.cover_photo.urls.small}
+					topThumbnail = {collection.preview_photos[1].urls.thumb}
+					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
+				/>
 			);
 		});
 	};
@@ -62,9 +58,12 @@ class Collections extends Component {
 
 	render() {
 		if (this.state.ready === true) {
+			
 			return (
 				<div className='Collections'>
-					{this.ready}
+					<div className='firstRow'>
+						{this.ready}
+					</div>
 				</div>
 			);
 		}

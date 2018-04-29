@@ -1,3 +1,13 @@
+// Mixins
+%rows
+	height: stretch
+	width: max-content
+
+// Styles
 .Collections
 	margin-top: 8%
 	margin-left: 33vw
+	overflow: auto
+
+.firstRow
+	@extend %rows
