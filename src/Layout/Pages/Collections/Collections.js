@@ -23,7 +23,6 @@ class Collections extends Component {
 			qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
 		};
 
-
 		request(options, this.unsplashCallback);
 	}
 
@@ -46,14 +45,14 @@ class Collections extends Component {
 			
 			return (
 				<Collection
-					key = {index}
+					class = {topOrBottom}
 					id = {collection.title.replace(/ /g,"_")}
+					float = {float}
 					collectionName = {collection.title}
 					cover = {collection.cover_photo.urls.small}
 					topThumbnail = {collection.preview_photos[1].urls.thumb}
 					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
-					float = {float}
-					class = {topOrBottom}
+					key = {index}
 				/>
 			);
 		});
