@@ -25,8 +25,7 @@ class Collections extends Component {
 			if (error) throw new Error(error);
 			unsplashResponse = JSON.parse(body);
 			console.log(unsplashResponse);
-			this.unsplashCallback();
-		});
+		}, this.unsplashCallback(unsplashResponse));
 	}
 
 	unsplashCallback = (unsplashResponse) => {
