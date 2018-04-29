@@ -11,13 +11,15 @@ const Layout = (props) => {
 				activeView = {props.activeView}
 				viewHandler = {props.viewHandler}
 			/>
-			<Backdrop 
-				activeBackdrop = {props.activeBackdrop} 
-			 	backdropAuthor = {props.backdropAuthor}
-			/>
-			<Pages 
-				activeView = {props.activeView}
-			/>
+			<div className='pageContent'>
+				<Backdrop 
+					activeBackdrop = {props.activeBackdrop} 
+				 	backdropAuthor = {props.backdropAuthor}
+				/>
+				<Pages 
+					activeView = {props.activeView}
+				/>
+			</div>
 		</Aux>
 	);
 };

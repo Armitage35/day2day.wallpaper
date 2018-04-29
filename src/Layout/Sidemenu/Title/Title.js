@@ -1,9 +1,13 @@
 import React from 'react';
 import './Title.css';
+import Aux from '../../../hoc/Aux.js';
 
 const Title = ( props ) => {
     return (
-        <p className='Title'>Most popular</p>
+        <Aux>
+            <p className='title'>{props.titleName}</p>
+            <hr className='titleSeparator' />
+        </Aux>
     );
 };
 

@@ -4,8 +4,10 @@ import './Sidemenu.css';
 
 const Sidemenu = ( props ) => {
     return (
-        <Title />  
+        <Title 
+            titleName = 'Most popular'
+        />  
     );
-}
+};
 
 export default Sidemenu;
