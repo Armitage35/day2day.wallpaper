@@ -47,6 +47,7 @@ class Collections extends Component {
 			return (
 				<Collection
 					key = {index}
+					id = {collection.title.replace(/ /g,"_")}
 					collectionName = {collection.title}
 					cover = {collection.cover_photo.urls.small}
 					topThumbnail = {collection.preview_photos[1].urls.thumb}
@@ -69,7 +70,7 @@ class Collections extends Component {
 			
 			return (
 				<div className='Collections'>
-					<div className='firstRow'>
+					<div className='galleryRows'>
 						{this.ready}
 					</div>
 				</div>

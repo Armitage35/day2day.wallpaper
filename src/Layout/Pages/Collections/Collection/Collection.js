@@ -22,7 +22,7 @@ const Collection = (props) => {
 	const collectionRow = 'Collection ' + props.class;
 
 	return (
-		<div className= {collectionRow} style= {style} >
+		<div className= {collectionRow} style= {style} id= {props.id}>
 			<div style= {collectionCoverStyle} className='coverCollection'> 
 				<p className='collectionTile'>{props.collectionName}</p> 
 			</div>
