@@ -14,7 +14,7 @@
     "yarn": "^1.6.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && gulp:sass",
     "build": "react-scripts build",
     "test": "xo && react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
