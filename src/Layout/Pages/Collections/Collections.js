@@ -7,10 +7,6 @@ var request = require("request");
 class Collections extends Component {
 
 	state = {
-		collectionName: '',
-		cover: '',
-		topThumbnail: '',
-		bottomThumbnail: '',
 		ready: false
 	};
 
@@ -23,48 +19,26 @@ class Collections extends Component {
 
 		request(options, function(error, response, body) {
 			if (error) throw new Error(error);
-			collectionHandler(JSON.parse(body));
+			displayCollectionsHandler(JSON.parse(body));
 		});
-
-		const collectionHandler = (unsplashResponse) => {
-			console.log(unsplashResponse);
-			let collectionName = unsplashResponse[0].title,
-				cover = unsplashResponse[0].cover_photo.urls.small,
-				topThumbnail = unsplashResponse[0].preview_photos[1].urls.thumb,
-				bottomThumbnail = unsplashResponse[0].preview_photos[2].urls.thumb;
-
-			this.setState({
-				collectionName: collectionName,
-				cover: cover,
-				topThumbnail: topThumbnail,
-				bottomThumbnail: bottomThumbnail,
-				ready: true
+		
+		// this.setState({ready: true});
+		
+		const displayCollectionsHandler = (unsplashResponse) => {
+			let collections = unsplashResponse.map(collection => {
+				return (
+					<Collection 
+					collectionName = {collection.title}
+					cover = {collection.cover_photo.urls.small}
+					topThumbnail = {collection.preview_photos[1].urls.thumb}
+					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
+					key = {collection.title}
+				/>);
 			});
+			console.log(collections);
 		};
 	}
 
-	Collections = () => {
-		return(
-			<div className='Collections'>
-				<div className='firstRow'>
-					<Collection 
-						collectionName = {this.state.collectionName}
-						cover = {this.state.cover}
-						topThumbnail = {this.state.topThumbnail}
-						bottomThumbnail = {this.state.bottomThumbnail}
-					/>
-				</div>
-				<div className='secondRow'>
-					<Collection 
-						collectionName = {this.state.collectionName}
-						cover = {this.state.cover}
-						topThumbnail = {this.state.topThumbnail}
-						bottomThumbnail = {this.state.bottomThumbnail}
-					/>
-				</div>
-			</div>
-		)
-	};
 
 	componentDidMount() {
 		this.callUnsplashCollection();
@@ -73,13 +47,13 @@ class Collections extends Component {
 	render() {
 		if (this.state.ready === true) {
 			return (
-				this.Collections()
+				this.callUnsplashCollection()
 			);
-		} else {
-			return <p>YOLO</p>;
+		}
+		else {
+			return <p>not ready</p>
 		}
 	}
 };
-
 
 export default Collections;
