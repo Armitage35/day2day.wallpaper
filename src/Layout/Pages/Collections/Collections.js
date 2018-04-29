@@ -20,9 +20,8 @@ class Collections extends Component {
 		request(options, function(error, response, body) {
 			if (error) throw new Error(error);
 			displayCollectionsHandler(JSON.parse(body));
-		});
+		}, this.setState({ready: true}));
 		
-		// this.setState({ready: true});
 		
 		const displayCollectionsHandler = (unsplashResponse) => {
 			let collections = unsplashResponse.map(collection => {
@@ -47,7 +46,7 @@ class Collections extends Component {
 	render() {
 		if (this.state.ready === true) {
 			return (
-				this.callUnsplashCollection()
+				<p>ready</p>
 			);
 		}
 		else {
