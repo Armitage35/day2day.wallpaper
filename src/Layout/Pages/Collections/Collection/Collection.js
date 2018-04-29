@@ -14,10 +14,16 @@ const Collection = (props) => {
 	const collectionThumbnailBottom = {
 		backgroundImage: 'url(' + props.bottomThumbnail + ')'
 	};
+	
+	const style = {
+		float: props.float,
+	};
+	
+	const collectionRow = 'Collection ' + props.class;
 
 	return (
-		<div className='Collection'>
-			<div style={collectionCoverStyle} className='coverCollection'> 
+		<div className= {collectionRow} style= {style} >
+			<div style= {collectionCoverStyle} className='coverCollection'> 
 				<p className='collectionTile'>{props.collectionName}</p> 
 			</div>
 			<div style={collectionThumbnailTop} className='collectionThumbnailTop'> </div>

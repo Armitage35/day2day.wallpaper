@@ -38,6 +38,12 @@ class Collections extends Component {
 
 	displayCollectionsHandler = (unsplashResponse) => {
 		this.ready = unsplashResponse.map((collection, index) => {
+			let float;
+			float = index === 4 ? float = 'none' : float = 'left';
+			
+			let topOrBottom;
+			topOrBottom = index <= 4 ? topOrBottom = '' : topOrBottom = 'secondRow';
+			
 			return (
 				<Collection
 					key = {index}
@@ -45,6 +51,8 @@ class Collections extends Component {
 					cover = {collection.cover_photo.urls.small}
 					topThumbnail = {collection.preview_photos[1].urls.thumb}
 					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
+					float = {float}
+					class = {topOrBottom}
 				/>
 			);
 		});
