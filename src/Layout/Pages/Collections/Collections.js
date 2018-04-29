@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Collection from './Collection/Collection.js';
 import './Collections.css';
+import Spinner from '../../../UtilitiesComponents/Spinner.js';
 
 var request = require("request");
 
@@ -54,14 +55,6 @@ class Collections extends Component {
 	};
 
 	ready = '';
-	notReady = (
-		<div class="sk-folding-cube">
-			<div class="sk-cube1 sk-cube"></div>
-			<div class="sk-cube2 sk-cube"></div>
-			<div class="sk-cube4 sk-cube"></div>
-			<div class="sk-cube3 sk-cube"></div>
-		</div>	
-	);
 
 	componentDidMount() {
 		this.callUnsplashCollection();
@@ -76,7 +69,7 @@ class Collections extends Component {
 			);
 		}
 		else {
-			return this.notReady;
+			return <Spinner />;
 		}
 	}
 };
