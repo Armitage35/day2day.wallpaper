@@ -40,19 +40,28 @@ class Collections extends Component {
 			let rowNumber;
 			index <= 4 ? rowNumber = 'firstRow' : rowNumber = 'secondRow';
 			return (
-				<Collection
-					collectionName = {collection.title}
-					cover = {collection.cover_photo.urls.small}
-					topThumbnail = {collection.preview_photos[1].urls.thumb}
-					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
-					key = {index}
-				/>
+				<div className={rowNumber}>
+					<Collection
+						collectionName = {collection.title}
+						cover = {collection.cover_photo.urls.small}
+						topThumbnail = {collection.preview_photos[1].urls.thumb}
+						bottomThumbnail = {collection.preview_photos[2].urls.thumb}
+						key = {index}
+					/>
+				</div>
 			);
 		});
 	};
 
 	ready = '';
-	notReady = <p>not ready</p>;
+	notReady = (
+		<div class="sk-folding-cube">
+			<div class="sk-cube1 sk-cube"></div>
+			<div class="sk-cube2 sk-cube"></div>
+			<div class="sk-cube4 sk-cube"></div>
+			<div class="sk-cube3 sk-cube"></div>
+		</div>	
+	);
 
 	componentDidMount() {
 		this.callUnsplashCollection();
@@ -62,9 +71,7 @@ class Collections extends Component {
 		if (this.state.ready === true) {
 			return (
 				<div className='Collections'>
-					<div className='firstRow'>
-						{this.ready}
-					</div>
+					{this.ready}
 				</div>
 			);
 		}
