@@ -10,35 +10,35 @@ class Collections extends Component {
 		ready: false
 	};
 
-	callUnsplashCollection = () => {
-		console.log('start');
+	constructor() {
+		super();
+		this.unsplashCallback = this.unsplashCallback.bind(this);
+	}
 
+	callUnsplashCollection = () => {
 		const options = {
 			method: 'GET',
 			url: 'https://api.unsplash.com/collections/featured',
-			qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
+			qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
 		};
 
-		let unsplashResponse;
 
-		request(options, function(error, response, body) {
-			if (error) throw new Error(error);
-			unsplashResponse = JSON.parse(body);
-			console.log(unsplashResponse);
-		}, this.unsplashCallback(unsplashResponse));
+		request(options, this.unsplashCallback);
 	}
 
-	unsplashCallback = (unsplashResponse) => {
+	unsplashCallback = (error, response, body) => {
+		let unsplashResponse;
+		if (error) throw new Error(error);
+		unsplashResponse = JSON.parse(body);
+
 		this.setState({ ready: true });
-		// this.displayCollectionsHandler(unsplashResponse);
-		console.log('merde');
-		console.log(unsplashResponse);
+		this.displayCollectionsHandler(unsplashResponse);
 	}
 
 	displayCollectionsHandler = (unsplashResponse) => {
-		let collections = unsplashResponse.map(collection => {
+		this.ready = unsplashResponse.map(collection => {
 			return (
-				<Collection 
+				<Collection
 				collectionName = {collection.title}
 				cover = {collection.cover_photo.urls.small}
 				topThumbnail = {collection.preview_photos[1].urls.thumb}
@@ -46,11 +46,9 @@ class Collections extends Component {
 				key = {collection.title}
 			/>);
 		});
-		console.log(collections);
-		this.ready = collections;
 	};
 
-	ready = <p>100% ready</p>;
+	ready = '';
 	notReady = <p>not ready</p>;
 
 	componentDidMount() {
