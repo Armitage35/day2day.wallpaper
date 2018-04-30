@@ -3,11 +3,15 @@ import Aux from '../../hoc/Aux.js';
 import Collections from './Collections/Collections.js';
 import Gallery from './Gallery/Gallery.js';
 
-const Pages = (props) => {
+const Pages = ( props ) => {
 	if (props.activeView === 'collections') {
+		// console.log('unsplash response in pages prop');
+		// console.log(props.unsplashResponse);
 		return (
 			<Aux>
-				<Collections /> 
+				<Collections 
+					unsplashResponse = {props.unsplashResponse}
+				/> 
 			</Aux>
 		);
 	} else {

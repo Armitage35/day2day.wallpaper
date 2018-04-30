@@ -4,7 +4,7 @@ import './PopularCollections.css';
 
 const PopularCollections = (props) => {
 
-	console.log(props.popularCollectionsList);
+	// console.log(props.popularCollectionsList);
 	console.log([props.popularCollectionsList]);
 
 	return (

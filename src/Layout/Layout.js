@@ -1,56 +1,83 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Aux from '../hoc/Aux.js';
 import Backdrop from './Backdrop/Backdrop.js';
 import Toolbar from './Toolbar/Toolbar.js';
 import Pages from './Pages/Pages.js';
 import Sidemenu from './Sidemenu/Sidemenu.js';
+import Spinner from '../UtilitiesComponents/Spinner.js';
 import './Layout.css';
 
 var request = require("request");
 
-const Layout = (props) => {
-	let unsplashResponse,
-		popularCollectionsList;
+class Layout extends Component {
+	constructor() {
+		super();
+		this.unsplashCallback = this.unsplashCallback.bind(this);
+	}
 
-	const options = {
-		method: 'GET',
-		url: 'https://api.unsplash.com/collections/featured',
-		qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' },
+	state = {
+		ready: false
 	};
 
-	request(options, function(error, response, body) {
-		if (error) throw new Error(error);
-		props.activeView === 'collections' ? unsplashResponse = JSON.parse(body) : unsplashResponse = '';
+	unsplashResponse;
+	popularCollectionsList;
 
-		popularCollectionsList = unsplashResponse.map((collection, index) => {
+
+	callUnsplashCollection = () => {
+		const options = {
+			method: 'GET',
+			url: 'https://api.unsplash.com/collections/featured',
+			qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
+		};
+
+		request(options, this.unsplashCallback);
+	}
+
+	unsplashCallback = (error, response, body) => {
+		if (error) throw new Error(error);
+		this.unsplashResponse = JSON.parse(body);
+
+		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
 			return collection.title;
 		});
 
-		console.log(popularCollectionsList);
-	});
+		this.setState({ ready: true });
+	}
 
+	componentDidMount() {
+		this.callUnsplashCollection();
+	}
 
-	return (
-		<Aux>
+	render() {
+		if (this.state.ready === 'false') {
+			return <Spinner />;
+		}
+		else {
+			console.log('here2');
+			console.log(this.popularCollectionsList);
+			return (
+				<Aux>
 			<Toolbar 
-				activeView = {props.activeView}
-				viewHandler = {props.viewHandler}
+				activeView = {this.props.activeView}
+				viewHandler = {this.props.viewHandler}
 			/>
 			<Backdrop 
-				activeBackdrop = {props.activeBackdrop} 
-			 	backdropAuthor = {props.backdropAuthor}
+				activeBackdrop = {this.props.activeBackdrop} 
+			 	backdropAuthor = {this.props.backdropAuthor}
 			/>
 			<div className='pageContent'>
 				<Sidemenu 
-					popularCollectionsList = {popularCollectionsList}
+					popularCollectionsList = {this.popularCollectionsList}
 				/>
 				<Pages 
-					activeView = {props.activeView}
-					unsplashResponse = {unsplashResponse}
+					activeView = {this.props.activeView}
+					unsplashResponse = {this.unsplashResponse}
 				/>
 			</div>
 		</Aux>
-	);
+			);
+		}
+	}
 };
 
 export default Layout;
