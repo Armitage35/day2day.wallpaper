@@ -9,7 +9,9 @@ const Sidemenu = ( props ) => {
 			<Title 
 				titleName = 'Most popular'
 			/>  
-			<PopularCollections />
+			<PopularCollections
+				popularCollectionsList = { props.popularCollections }
+			/>
 		</div>
 	);
 };
