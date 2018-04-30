@@ -7,13 +7,8 @@ const PopularCollections = (props) => {
 	let collectionList = [props.popularCollectionsList][0];
 
 	if (collectionList !== undefined) {
-		collectionList = collectionList.map((collection, key) => {
-			if (key < 4) {
-				return (
-				// eslint-disable-next-line
-					<p key={key} className='popularCollectionsList'>{collection}</p>
-				);
-			}
+		collectionList = collectionList.forEach(function(element) {
+			return <p key={element} className='popularCollectionsList'>{element}</p>;
 		});
 	}
 
