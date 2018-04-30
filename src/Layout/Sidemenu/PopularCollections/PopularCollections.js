@@ -4,17 +4,23 @@ import './PopularCollections.css';
 
 const PopularCollections = (props) => {
 
-	// console.log(props.popularCollectionsList);
-	console.log([props.popularCollectionsList]);
+	let collectionList = [props.popularCollectionsList][0];
+
+	if (collectionList !== undefined) {
+		collectionList = collectionList.map((collection, key) => {
+			if (key < 4) {
+				return (
+				// eslint-disable-next-line
+					<p key={key} className='popularCollectionsList'>{collection}</p>
+				);
+			}
+		});
+	}
 
 	return (
 		<Aux>
 			<p className='popularIntro'>Popular collections</p>
-			{[props.popularCollectionsList].map((collectionName, index) => {
-				return (
-					<p className='popularCollectionsList' key={index}>{collectionName}</p>
-				);
-			})}
+			{collectionList}
 		</Aux>
 	);
 };

@@ -53,8 +53,6 @@ class Layout extends Component {
 			return <Spinner />;
 		}
 		else {
-			console.log('here2');
-			console.log(this.popularCollectionsList);
 			return (
 				<Aux>
 			<Toolbar 
