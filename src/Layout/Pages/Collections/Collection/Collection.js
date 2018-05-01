@@ -2,7 +2,7 @@ import React from 'react';
 import './Collection.css';
 
 
-const Collection = (props) => {
+const Collection = ( props ) => {
 	const collectionCoverStyle = {
 		backgroundImage: 'url(' + props.cover + ')'
 	};
@@ -19,7 +19,7 @@ const Collection = (props) => {
 		float: props.float,
 	};
 	
-	const collectionRow = 'Collection ' + props.class;
+	const collectionRow = 'Collection ' + props.classCSS;
 
 	return (
 		<div className= {collectionRow} style= {style} id= {props.id}>

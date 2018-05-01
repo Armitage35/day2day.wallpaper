@@ -3,7 +3,7 @@ import Collection from './Collection/Collection.js';
 import './Collections.css';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 
-const Collections = (props) => {
+const Collections = ( props ) => {
 
 	let collections;
 
@@ -17,7 +17,7 @@ const Collections = (props) => {
 
 			return (
 				<Collection
-					class = {topOrBottom}
+					classCSS = {topOrBottom}
 					id = {collection.title.replace(/ /g,"_")}
 					float = {float}
 					collectionName = {collection.title}

@@ -2,16 +2,14 @@ import React from 'react';
 import Aux from '../../../hoc/Aux.js';
 import './PopularCollections.css';
 
-const PopularCollections = (props) => {
+const PopularCollections = ( props ) => {
 
 	let collectionList = [props.popularCollectionsList][0];
 
 	if (collectionList !== undefined) {
 		collectionList = collectionList.map((collection, key) => {
 			if (key < 4) {
-				return (
-					<p key={key} className='popularCollectionsList'>{collection}</p>
-				);
+				return (<p key={key} className='popularCollectionsList'>{collection}</p>);
 			}
 			else { return '' }
 		});
