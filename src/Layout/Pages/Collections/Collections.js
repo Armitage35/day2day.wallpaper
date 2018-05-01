@@ -1,48 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Collection from './Collection/Collection.js';
 import './Collections.css';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 
-var request = require("request");
+const Collections = (props) => {
 
-class Collections extends Component {
+	let collections;
 
-	state = {
-		ready: false
-	};
-
-	constructor() {
-		super();
-		this.unsplashCallback = this.unsplashCallback.bind(this);
-	}
-
-	callUnsplashCollection = () => {
-		const options = {
-			method: 'GET',
-			url: 'https://api.unsplash.com/collections/featured',
-			qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
-		};
-		
-		request(options, this.unsplashCallback);
-	}
-
-	unsplashCallback = (error, response, body) => {
-		let unsplashResponse;
-		if (error) throw new Error(error);
-		unsplashResponse = JSON.parse(body);
-
-		this.setState({ ready: true });
-		this.displayCollectionsHandler(unsplashResponse);
-	}
-
-	displayCollectionsHandler = (unsplashResponse) => {
-		this.ready = unsplashResponse.map((collection, index) => {
+	if (props.unsplashResponse !== undefined) {
+		collections = props.unsplashResponse.map((collection, index) => {
 			let float;
 			float = index === 4 ? float = 'none' : float = 'left';
-			
+
 			let topOrBottom;
 			topOrBottom = index <= 4 ? topOrBottom = '' : topOrBottom = 'secondRow';
-			
+
 			return (
 				<Collection
 					class = {topOrBottom}
@@ -56,32 +28,16 @@ class Collections extends Component {
 				/>
 			);
 		});
-	};
-
-	ready = '';
-
-	componentDidMount() {
-		this.callUnsplashCollection();
+	}
+	else {
+		return <Spinner />;
 	}
 
-	render() {
-		// console.log('unsplash response in collections prop');
-		// console.log(this.props.unsplashResponse);
-		
-		if (this.state.ready === true) {
-			
-			return (
-				<div className='Collections'>
-					<div className='galleryRows'>
-						{this.ready}
-					</div>
-				</div>
-			);
-		}
-		else {
-			return <Spinner />;
-		}
-	}
+	return (
+		<div className='Collections'>
+			<div className='galleryRows'>{collections}</div>
+		</div>
+	);
 };
 
 export default Collections;

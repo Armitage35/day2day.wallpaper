@@ -7,8 +7,13 @@ const PopularCollections = (props) => {
 	let collectionList = [props.popularCollectionsList][0];
 
 	if (collectionList !== undefined) {
-		collectionList = collectionList.forEach(function(element) {
-			return <p key={element} className='popularCollectionsList'>{element}</p>;
+		collectionList = collectionList.map((collection, key) => {
+			if (key < 4) {
+				return (
+					<p key={key} className='popularCollectionsList'>{collection}</p>
+				);
+			}
+			else { return '' }
 		});
 	}
 

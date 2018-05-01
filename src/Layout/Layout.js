@@ -55,24 +55,24 @@ class Layout extends Component {
 		else {
 			return (
 				<Aux>
-			<Toolbar 
-				activeView = {this.props.activeView}
-				viewHandler = {this.props.viewHandler}
-			/>
-			<Backdrop 
-				activeBackdrop = {this.props.activeBackdrop} 
-			 	backdropAuthor = {this.props.backdropAuthor}
-			/>
-			<div className='pageContent'>
-				<Sidemenu 
-					popularCollectionsList = {this.popularCollectionsList}
-				/>
-				<Pages 
+				<Toolbar 
 					activeView = {this.props.activeView}
-					unsplashResponse = {this.unsplashResponse}
+					viewHandler = {this.props.viewHandler}
 				/>
-			</div>
-		</Aux>
+				<Backdrop 
+					activeBackdrop = {this.props.activeBackdrop} 
+				 	backdropAuthor = {this.props.backdropAuthor}
+				/>
+				<div className='pageContent'>
+					<Sidemenu 
+						popularCollectionsList = {this.popularCollectionsList}
+					/>
+					<Pages 
+						activeView = {this.props.activeView}
+						unsplashResponse = {this.unsplashResponse}
+					/>
+				</div>
+			</Aux>
 			);
 		}
 	}
