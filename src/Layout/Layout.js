@@ -50,6 +50,8 @@ class Layout extends Component {
 			url: 'https://api.unsplash.com/photos',
 			qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
 		};
+		
+		this.unsplashResponse = '';
 
 		request(options, function(error, response, body) {
 			if (error) throw new Error(error);
@@ -58,13 +60,14 @@ class Layout extends Component {
 	}
 
 	componentWillReceiveProps(next) {
-		switch (this.props.activeView) {
+		switch (next.activeView) {
 			case 'collections':
 				this.callUnsplashCollection();
 				break;
 			case 'gallery':
 			case 'explore':
 				this.callUnsplashRandom();
+				console.log('random');
 				break;
 			default:
 				console.log('default switch... how weird!');
