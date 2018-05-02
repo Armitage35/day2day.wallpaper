@@ -12,11 +12,12 @@ var request = require("request");
 class Layout extends Component {
 	constructor() {
 		super();
-		this.unsplashCallback = this.unsplashCallback.bind(this);
+		this.unsplashCollectionCallback = this.unsplashCollectionCallback.bind(this);
 	}
 
 	state = {
-		ready: false
+		ready: false,
+		unsplashResponse: {}
 	};
 
 	unsplashResponse;
@@ -30,10 +31,10 @@ class Layout extends Component {
 			qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
 		};
 
-		request(options, this.unsplashCallback);
+		request(options, this.unsplashCollectionCallback);
 	}
 
-	unsplashCallback = (error, response, body) => {
+	unsplashCollectionCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 		this.unsplashResponse = JSON.parse(body);
 
@@ -41,7 +42,7 @@ class Layout extends Component {
 			return collection.title;
 		});
 
-		this.setState({ ready: true });
+		this.setState({ ready: true, unsplashResponse: this.unsplashResponse });
 	}
 
 	callUnsplashRandom = () => {
@@ -50,13 +51,14 @@ class Layout extends Component {
 			url: 'https://api.unsplash.com/photos',
 			qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
 		};
-		
-		this.unsplashResponse = '';
 
-		request(options, function(error, response, body) {
-			if (error) throw new Error(error);
-			this.unsplashResponse = JSON.parse(body);
-		});
+		request(options, this.unsplashCollectionCallback);
+	}
+
+	unsplashRandomCallback = (error, response, body) => {
+		if (error) throw new Error(error);
+		this.unsplashResponse = JSON.parse(body);
+		this.setState({ ready: true, unsplashResponse: this.unsplashResponse });
 	}
 
 	componentWillReceiveProps(next) {
@@ -67,7 +69,6 @@ class Layout extends Component {
 			case 'gallery':
 			case 'explore':
 				this.callUnsplashRandom();
-				console.log('random');
 				break;
 			default:
 				console.log('default switch... how weird!');
@@ -75,7 +76,7 @@ class Layout extends Component {
 	}
 
 	render() {
-		if (this.state.ready === 'false') {
+		if (this.state.ready === false) {
 			return <Spinner />;
 		}
 		else {
