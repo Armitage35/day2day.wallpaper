@@ -44,8 +44,31 @@ class Layout extends Component {
 		this.setState({ ready: true });
 	}
 
-	componentDidMount() {
-		this.callUnsplashCollection();
+	callUnsplashRandom = () => {
+		const options = {
+			method: 'GET',
+			url: 'https://api.unsplash.com/photos',
+			qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
+		};
+
+		request(options, function(error, response, body) {
+			if (error) throw new Error(error);
+			this.unsplashResponse = JSON.parse(body);
+		});
+	}
+
+	componentWillReceiveProps(next) {
+		switch (this.props.activeView) {
+			case 'collections':
+				this.callUnsplashCollection();
+				break;
+			case 'gallery':
+			case 'explore':
+				this.callUnsplashRandom();
+				break;
+			default:
+				console.log('default switch... how weird!');
+		}
 	}
 
 	render() {
