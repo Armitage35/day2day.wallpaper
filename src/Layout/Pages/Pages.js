@@ -7,12 +7,12 @@ const Pages = (props) => {
 		case 'collections':
 			return (
 				<Collections 
-					unsplashResponse = {props.unsplashResponse}
+					unsplashCollection = {props.unsplashCollection}
 				/>
 			);
 		case 'gallery':
 			return <Gallery 
-				unsplashResponse = {props.unsplashResponse}
+				unsplashPictures = {props.unsplashPictures}
 			/>;
 		default:
 			return <Gallery />;

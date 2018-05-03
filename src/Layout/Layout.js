@@ -13,22 +13,28 @@ class Layout extends Component {
 	constructor() {
 		super();
 		this.unsplashCollectionCallback = this.unsplashCollectionCallback.bind(this);
+		this.unsplashRandomCallback = this.unsplashRandomCallback.bind(this);
+
 	}
 
 	state = {
 		ready: false,
-		unsplashResponse: {}
+		unsplashCollection: '',
+		unsplashPictures: null,
 	};
 
 	unsplashResponse;
 	popularCollectionsList;
 
+	unsplashOptions = {
+		method: 'GET',
+		url: 'https://api.unsplash.com/collections/featured',
+		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
+	};
 
 	callUnsplashCollection = () => {
-		const options = {
-			method: 'GET',
-			url: 'https://api.unsplash.com/collections/featured',
-			qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
+		const options = { ...this.unsplashOptions,
+			url: 'https://api.unsplash.com/collections/featured'
 		};
 
 		request(options, this.unsplashCollectionCallback);
@@ -42,23 +48,24 @@ class Layout extends Component {
 			return collection.title;
 		});
 
-		this.setState({ ready: true, unsplashResponse: this.unsplashResponse });
+		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
 	}
 
 	callUnsplashRandom = () => {
-		const options = {
-			method: 'GET',
-			url: 'https://api.unsplash.com/photos',
-			qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
+		const options = { ...this.unsplashOptions,
+			url: 'https://api.unsplash.com/photos'
 		};
 
-		request(options, this.unsplashCollectionCallback);
+		request(options, this.unsplashRandomCallback);
 	}
 
 	unsplashRandomCallback = (error, response, body) => {
 		if (error) throw new Error(error);
+
+		console.log('unsplashRandomCallback');
+
 		this.unsplashResponse = JSON.parse(body);
-		this.setState({ ready: true, unsplashResponse: this.unsplashResponse });
+		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
 	}
 
 	componentWillReceiveProps(next) {
@@ -96,7 +103,8 @@ class Layout extends Component {
 					/>
 					<Pages 
 						activeView = {this.props.activeView}
-						unsplashResponse = {this.unsplashResponse}
+						unsplashCollection = {this.state.unsplashCollection}
+						unsplashPictures = {this.state.unsplashPictures}
 					/>
 				</div>
 			</Aux>

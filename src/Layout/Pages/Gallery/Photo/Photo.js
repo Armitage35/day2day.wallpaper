@@ -5,12 +5,11 @@ import Aux from '../../../../hoc/Aux.js';
 const Photo = ( props ) => {
 	
 	const style = {
-		backgroundImage: 'url(' + props.urls + ')'
+		backgroundImage: 'url(' + props.url + ')'
 	};
 	
 	return (
 		<Aux>
-			<div className='photo' style={style}></div>
 			<div className='photo' style={style}></div>
 		</Aux>
 	);

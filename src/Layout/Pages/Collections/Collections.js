@@ -7,8 +7,8 @@ const Collections = ( props ) => {
 
 	let collections;
 
-	if (props.unsplashResponse !== undefined) {
-		collections = props.unsplashResponse.map((collection, index) => {
+	if (props.unsplashCollection !== undefined) {
+		collections = props.unsplashCollection.map((collection, index) => {
 			let float;
 			float = index === 4 ? float = 'none' : float = 'left';
 
