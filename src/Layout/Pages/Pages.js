@@ -1,23 +1,21 @@
 import React from 'react';
-import Aux from '../../hoc/Aux.js';
 import Collections from './Collections/Collections.js';
 import Gallery from './Gallery/Gallery.js';
 
-const Pages = ( props ) => {
-	if (props.activeView === 'collections') {
-		// console.log('unsplash response in pages prop');
-		// console.log(props.unsplashResponse);
-		return (
-			<Aux>
+const Pages = (props) => {
+	switch (props.activeView) {
+		case 'collections':
+			return (
 				<Collections 
-					unsplashResponse = {props.unsplashResponse}
-				/> 
-			</Aux>
-		);
-	} else {
-		return (
-			<Gallery />
-		);
+					unsplashCollection = {props.unsplashCollection}
+				/>
+			);
+		case 'gallery':
+			return <Gallery 
+				unsplashPictures = {props.unsplashPictures}
+			/>;
+		default:
+			return <Gallery />;
 	}
 };
 

@@ -4,10 +4,16 @@ import PopularCollections from './PopularCollections/PopularCollections.js';
 import './Sidemenu.css';
 
 const Sidemenu = ( props ) => {
+	
+	const titleOptions = {
+		gallery: 'Popular pictures',
+		collections: 'Most popular'
+	};
+	
 	return (
 		<div className='sidemenu'>
 			<Title 
-				titleName = 'Most popular'
+				titleName = {titleOptions[props.activeView]}
 			/>  
 			<PopularCollections
 				popularCollectionsList = { props.popularCollectionsList }

@@ -1,25 +1,28 @@
 {
-  "name": "day2day.wallpaper",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "gulp-cli": "^2.0.1",
-    "gulp-sass": "^4.0.1",
-    "node-sass": "^4.8.3",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
-    "request": "^2.85.0",
-    "xo": "^0.20.3",
-    "yarn": "^1.6.0"
-  },
-  "scripts": {
-    "start": "yarn gulp sass && react-scripts start",
-    "build": "yarn gulp sass && react-scripts build",
-    "test": "xo && react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1"
-  }
+	"name": "day2day.wallpaper",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"eslint-config-xo-react": "^0.16.0",
+		"eslint-plugin-react": "^7.7.0",
+		"gulp-cli": "^2.0.1",
+		"gulp-sass": "^4.0.1",
+		"node-sass": "^4.8.3",
+		"react": "^16.3.2",
+		"react-dom": "^16.3.2",
+		"react-scripts": "1.1.4",
+		"request": "^2.85.0",
+		"xo": "^0.20.3",
+		"yarn": "^1.6.0"
+	},
+	"scripts": {
+		"start": "yarn gulp sass && react-scripts start",
+		"build": "yarn gulp sass && react-scripts build",
+		"test": "xo && react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"gulp": "^3.9.1"
+	},
+	"homepage": "http://armitage35.github.io/day2day.wallpaper"
 }

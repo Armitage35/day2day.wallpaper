@@ -6,9 +6,12 @@ import Spinner from '../../../UtilitiesComponents/Spinner.js';
 const Collections = ( props ) => {
 
 	let collections;
-
-	if (props.unsplashResponse !== undefined) {
-		collections = props.unsplashResponse.map((collection, index) => {
+	
+	if (props.unsplashCollection === undefined) {
+		return <Spinner />;
+	}
+	else {
+		collections = props.unsplashCollection.map((collection, index) => {
 			let float;
 			float = index === 4 ? float = 'none' : float = 'left';
 
@@ -28,9 +31,6 @@ const Collections = ( props ) => {
 				/>
 			);
 		});
-	}
-	else {
-		return <Spinner />;
 	}
 
 	return (
