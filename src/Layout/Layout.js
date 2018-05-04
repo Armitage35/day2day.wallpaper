@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Aux from '../hoc/Aux.js';
 import Backdrop from './Backdrop/Backdrop.js';
 import Toolbar from './Toolbar/Toolbar.js';
 import Pages from './Pages/Pages.js';
@@ -88,7 +87,7 @@ class Layout extends Component {
 		}
 		else {
 			return (
-				<Aux>
+				<React.Fragment>
 				<Toolbar 
 					activeView = {this.props.activeView}
 					viewHandler = {this.props.viewHandler}
@@ -100,6 +99,8 @@ class Layout extends Component {
 				<div className='pageContent'>
 					<Sidemenu 
 						popularCollectionsList = {this.popularCollectionsList}
+						activeView = {this.props.activeView} 
+
 					/>
 					<Pages 
 						activeView = {this.props.activeView}
@@ -107,7 +108,7 @@ class Layout extends Component {
 						unsplashPictures = {this.state.unsplashPictures}
 					/>
 				</div>
-			</Aux>
+			</React.Fragment>
 			);
 		}
 	}
