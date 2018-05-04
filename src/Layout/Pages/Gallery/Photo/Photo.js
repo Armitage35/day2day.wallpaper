@@ -5,7 +5,8 @@ import Aux from '../../../../hoc/Aux.js';
 const Photo = ( props ) => {
 	
 	const style = {
-		backgroundImage: 'url(' + props.url + ')'
+		backgroundImage: 'url(' + props.url + ')',
+		float: props.float
 	};
 	
 	return (

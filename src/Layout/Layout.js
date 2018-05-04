@@ -23,12 +23,12 @@ class Layout extends Component {
 		unsplashPictures: null,
 	};
 
+	// to do: remove those fuckers!!
 	unsplashResponse;
 	popularCollectionsList;
 
 	unsplashOptions = {
 		method: 'GET',
-		url: 'https://api.unsplash.com/collections/featured',
 		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
 	};
 

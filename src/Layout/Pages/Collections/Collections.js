@@ -6,7 +6,7 @@ import Spinner from '../../../UtilitiesComponents/Spinner.js';
 const Collections = ( props ) => {
 
 	let collections;
-
+	
 	if (props.unsplashCollection !== undefined) {
 		collections = props.unsplashCollection.map((collection, index) => {
 			let float;
