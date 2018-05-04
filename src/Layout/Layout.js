@@ -77,7 +77,7 @@ class Layout extends Component {
 				this.callUnsplashRandom();
 				break;
 			default:
-				console.log('default switch... how weird!');
+				console.log('active view does not match one of planned views');
 		}
 	}
 

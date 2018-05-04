@@ -5,26 +5,15 @@ import './Sidemenu.css';
 
 const Sidemenu = ( props ) => {
 	
-	const titleHandler = () => {
-		let title;
-		switch(props.activeView) {
-			case 'gallery':
-				title = 'Popular pictures';
-				break;
-			case 'collections':
-				title = 'Most popular';
-				break;
-			default:
-				title = 'day2day.wallpaper'
-		}
-		return title;
-		
+	const titleOptions = {
+		gallery: 'Popular pictures',
+		collections: 'Most popular'
 	};
 	
 	return (
 		<div className='sidemenu'>
 			<Title 
-				titleName = {titleHandler()}
+				titleName = {titleOptions[props.activeView]}
 			/>  
 			<PopularCollections
 				popularCollectionsList = { props.popularCollectionsList }

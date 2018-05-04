@@ -7,7 +7,10 @@ const Collections = ( props ) => {
 
 	let collections;
 	
-	if (props.unsplashCollection !== undefined) {
+	if (props.unsplashCollection === undefined) {
+		return <Spinner />;
+	}
+	else {
 		collections = props.unsplashCollection.map((collection, index) => {
 			let float;
 			float = index === 4 ? float = 'none' : float = 'left';
@@ -28,9 +31,6 @@ const Collections = ( props ) => {
 				/>
 			);
 		});
-	}
-	else {
-		return <Spinner />;
 	}
 
 	return (
