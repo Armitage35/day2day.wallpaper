@@ -53,7 +53,7 @@ class Layout extends Component {
 			...this.unsplashOptions,
 			qs: {
 				...this.unsplashOptions.qs,
-				count: 20,
+				count: '20',
 				orientation: 'landscape'
 			},
 			url: 'https://api.unsplash.com/photos'
@@ -72,8 +72,7 @@ class Layout extends Component {
 	componentWillReceiveProps(next) {
 		const options = {
 			collections: this.callUnsplashCollection(),
-			gallery: this.callUnsplashRandom(),
-			explore: this.callUnsplashCollection()
+			gallery: this.callUnsplashRandom()
 		};
 		
 		// eslint-disable-next-line
