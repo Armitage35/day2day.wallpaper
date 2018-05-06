@@ -13,8 +13,6 @@ class Layout extends Component {
 		super();
 		this.unsplashCollectionCallback = this.unsplashCollectionCallback.bind(this);
 		this.unsplashRandomCallback = this.unsplashRandomCallback.bind(this);
-				this.unsplashRandomCallback = this.unsplashRandomCallback.bind(this);
-
 	}
 
 	state = {
@@ -51,10 +49,16 @@ class Layout extends Component {
 	}
 
 	callUnsplashRandom = () => {
-		const options = { ...this.unsplashOptions,
+		const options = { 
+			...this.unsplashOptions,
+			qs: {
+				...this.unsplashOptions.qs,
+				count: 20,
+				orientation: 'landscape'
+			},
 			url: 'https://api.unsplash.com/photos'
 		};
-
+		
 		request(options, this.unsplashRandomCallback);
 	}
 
