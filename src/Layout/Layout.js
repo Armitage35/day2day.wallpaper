@@ -13,6 +13,7 @@ class Layout extends Component {
 		super();
 		this.unsplashCollectionCallback = this.unsplashCollectionCallback.bind(this);
 		this.unsplashRandomCallback = this.unsplashRandomCallback.bind(this);
+				this.unsplashRandomCallback = this.unsplashRandomCallback.bind(this);
 
 	}
 
@@ -22,7 +23,6 @@ class Layout extends Component {
 		unsplashPictures: null,
 	};
 
-	// to do: remove those fuckers!!
 	unsplashResponse;
 	popularCollectionsList;
 
@@ -61,24 +61,19 @@ class Layout extends Component {
 	unsplashRandomCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
-		console.log('unsplashRandomCallback');
-
 		this.unsplashResponse = JSON.parse(body);
 		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
 	}
 
 	componentWillReceiveProps(next) {
-		switch (next.activeView) {
-			case 'collections':
-				this.callUnsplashCollection();
-				break;
-			case 'gallery':
-			case 'explore':
-				this.callUnsplashRandom();
-				break;
-			default:
-				console.log('active view does not match one of planned views');
-		}
+		const options = {
+			collections: this.callUnsplashCollection(),
+			gallery: this.callUnsplashRandom(),
+			explore: this.callUnsplashCollection()
+		};
+		
+		// eslint-disable-next-line
+		options[next.activeView];
 	}
 
 	render() {

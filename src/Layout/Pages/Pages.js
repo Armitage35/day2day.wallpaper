@@ -14,6 +14,10 @@ const Pages = (props) => {
 			return <Gallery 
 				unsplashPictures = {props.unsplashPictures}
 			/>;
+		case 'explore':
+			return <Gallery 
+				unsplashPictures = {props.unsplashPictures}
+			/>;
 		default:
 			return <Gallery />;
 	}
