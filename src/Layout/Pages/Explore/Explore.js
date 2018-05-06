@@ -6,14 +6,14 @@ import './Explore.css';
 const Explore = (props) => {
 	return (
 		<div className='Explore'>
-			<p className='exploreLabel'>Collections</p>
-				<Collections 
-					unsplashCollection = {props.unsplashCollection}
-				/>
-			<p className='exploreLabel'>Photos</p>
-				<Gallery 
-					unsplashPictures = {props.unsplashPictures}
-				/>
+			<Collections 
+				label = 'Collections'
+				unsplashCollection = {props.unsplashCollection}
+			/>
+			<Gallery 
+				label = 'Photos'
+				unsplashPictures = {props.unsplashPictures}
+			/>
 		</div>
 	);
 };

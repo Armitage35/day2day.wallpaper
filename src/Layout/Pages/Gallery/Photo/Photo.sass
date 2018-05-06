@@ -1,9 +1,16 @@
+// Extends
+%photo 
+	background-size: cover
+	border: 2px white solid
+	display: grid
+
+// Classes
 .photo
-    height: 250px
-    width: 300px
-    background-size: cover
-    border: 2px white solid
-    display: grid
-    
-// .photo:nth-of-type(1)
-//     border-left-width: 5px
+	@extend %photo
+	height: 250px
+	width: 300px
+
+.explorePhoto
+	@extend %photo
+	height: 125px
+	width: 150px

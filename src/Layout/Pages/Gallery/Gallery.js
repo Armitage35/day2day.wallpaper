@@ -5,11 +5,18 @@ import './Gallery.css';
 
 const Gallery = (props) => {
 
+	let label,
+		photoClass;
+		
+	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
+	props.label !== undefined ? photoClass = 'explorePhoto' : photoClass = 'photo';
+
 	if (props.unsplashPictures !== undefined) {
 		let pictures = props.unsplashPictures.map((photo, index) => {
 			let float;
 			float = index === 4 ? float = 'none' : float = 'left';
 			return <Photo 
+				cssClass = {photoClass}
 				float = {float}
 				url = {photo.urls.thumb}
 				key = {index}
@@ -17,6 +24,7 @@ const Gallery = (props) => {
 		});
 		return (
 			<div className='Gallery'>
+				{label}
 				<div className='galleryRows'>{pictures}</div>
 			</div>);
 	}

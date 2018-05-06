@@ -3,10 +3,14 @@ import Collection from './Collection/Collection.js';
 import './Collections.css';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 
-const Collections = ( props ) => {
+const Collections = (props) => {
 
-	let collections;
-	
+	let collections,
+		label;
+		
+	// Label handling for explore view
+	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
+
 	if (props.unsplashCollection === undefined) {
 		return <Spinner />;
 	}
@@ -35,6 +39,7 @@ const Collections = ( props ) => {
 
 	return (
 		<div className='Collections'>
+			{label}
 			<div className='galleryRows'>{collections}</div>
 		</div>
 	);

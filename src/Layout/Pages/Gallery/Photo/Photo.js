@@ -11,7 +11,7 @@ const Photo = ( props ) => {
 	
 	return (
 		<Aux>
-			<div className='photo' style={style}></div>
+			<div className={props.cssClass} style={style}></div>
 		</Aux>
 	);
 };
