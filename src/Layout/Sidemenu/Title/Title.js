@@ -12,7 +12,7 @@ const Title = (props) => {
 
     return (
         <Aux>
-            <p className='title'>{titleOptions[props.titleName]}</p>
+            <p className='title'>{titleOptions[props.activeView]}</p>
             <hr className='titleSeparator' />
         </Aux>
     );

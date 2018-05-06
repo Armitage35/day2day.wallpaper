@@ -5,7 +5,7 @@ import './Gallery.css';
 
 const Gallery = (props) => {
 
-	if (props.unsplashPictures !== null) {
+	if (props.unsplashPictures !== undefined) {
 		let pictures = props.unsplashPictures.map((photo, index) => {
 			let float;
 			float = index === 4 ? float = 'none' : float = 'left';
@@ -15,7 +15,10 @@ const Gallery = (props) => {
 				key = {index}
 			/>;
 		});
-		return <div className='Gallery'><div className='galleryRows'>{pictures}</div></div>;
+		return (
+			<div className='Gallery'>
+				<div className='galleryRows'>{pictures}</div>
+			</div>);
 	}
 	else {
 		return <Spinner />;
