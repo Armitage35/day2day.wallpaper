@@ -19,10 +19,8 @@ const Collection = ( props ) => {
 		float: props.float,
 	};
 	
-	const collectionRow = 'Collection ' + props.classCSS;
-
 	return (
-		<div className= {collectionRow} style= {style} id= {props.id}>
+		<div className='Collection' style= {style} id= {props.id}>
 			<div style= {collectionCoverStyle} className='coverCollection'> 
 				<p className='collectionTile'>{props.collectionName}</p> 
 			</div>
