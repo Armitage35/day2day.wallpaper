@@ -14,6 +14,7 @@ const Pages = (props) => {
 		case 'gallery':
 			return <Gallery 
 				unsplashPictures = {props.unsplashPictures}
+				detailedPictureHandler = {props.detailedPictureHandler}
 			/>;
 		case 'explore':
 			return <Explore 

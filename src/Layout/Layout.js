@@ -56,10 +56,6 @@ class Layout extends Component {
 		if (error) throw new Error(error);
 		this.unsplashResponse = JSON.parse(body);
 
-		if (this.unsplashResponse.length < 9) {
-			console.log('less than 10');
-		}
-
 		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
 			return collection.title;
 		});
@@ -73,6 +69,10 @@ class Layout extends Component {
 
 		this.unsplashResponse = JSON.parse(body);
 		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
+	}
+
+	detailedPictureHandler = (event) => {
+		console.log('yolo');
 	}
 
 	componentWillReceiveProps(next) {
@@ -118,6 +118,7 @@ class Layout extends Component {
 						activeView = {this.props.activeView}
 						unsplashCollection = {this.state.unsplashCollection}
 						unsplashPictures = {this.state.unsplashPictures}
+						detailedPictureHandler = {this.detailedPictureHandler}
 					/>
 				</div>
 			</React.Fragment>

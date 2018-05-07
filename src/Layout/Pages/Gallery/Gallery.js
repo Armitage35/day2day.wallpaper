@@ -21,6 +21,7 @@ const Gallery = (props) => {
 				url = {photo.urls.thumb}
 				key = {index}
 				photoId = {photo.id}
+				detailedPictureHandler = {props.detailedPictureHandler}
 			/>;
 		});
 		return (
