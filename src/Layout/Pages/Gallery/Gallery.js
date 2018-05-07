@@ -20,6 +20,7 @@ const Gallery = (props) => {
 				float = {float}
 				url = {photo.urls.thumb}
 				key = {index}
+				photoId = {photo.id}
 			/>;
 		});
 		return (
