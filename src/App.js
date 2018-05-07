@@ -11,7 +11,7 @@ class App extends Component {
 		backdropAuthor: '',
 		activeCollection: '',
 		activePicture: '',
-		activeView: 'collections',
+		activeView: 'explore',
 	}
 
 	activeViewHandler = (event) => {
