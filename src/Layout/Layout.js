@@ -11,8 +11,8 @@ var request = require("request");
 class Layout extends Component {
 	constructor() {
 		super();
-		this.unsplashCollectionCallback = this.unsplashCollectionCallback.bind(this);
-		this.unsplashRandomCallback = this.unsplashRandomCallback.bind(this);
+		this.unsplashFeaturedCollectionCallback = this.unsplashFeaturedCollectionCallback.bind(this);
+		this.unsplashRandomPicturesCallback = this.unsplashRandomPicturesCallback.bind(this);
 	}
 
 	state = {
@@ -29,28 +29,15 @@ class Layout extends Component {
 		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
 	};
 
-	callUnsplashCollection = () => {
+	callUnsplashFeaturedCollection = () => {
 		const options = { ...this.unsplashOptions,
 			url: 'https://api.unsplash.com/collections/featured'
 		};
 
-		request(options, this.unsplashCollectionCallback);
+		request(options, this.unsplashFeaturedCollectionCallback);
 	}
-
-	unsplashCollectionCallback = (error, response, body) => {
-		if (error) throw new Error(error);
-		this.unsplashResponse = JSON.parse(body);
-
-		console.log(this.unsplashResponse);
-
-		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
-			return collection.title;
-		});
-
-		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
-	}
-
-	callUnsplashRandom = () => {
+	// handle random pictures
+	callUnsplashRandomPictures = () => {
 		const options = {
 			...this.unsplashOptions,
 			qs: {
@@ -61,10 +48,27 @@ class Layout extends Component {
 			url: 'https://api.unsplash.com/photos'
 		};
 
-		request(options, this.unsplashRandomCallback);
+		request(options, this.unsplashRandomPicturesCallback);
 	}
 
-	unsplashRandomCallback = (error, response, body) => {
+	// handle curated pictures
+	unsplashFeaturedCollectionCallback = (error, response, body) => {
+		if (error) throw new Error(error);
+		this.unsplashResponse = JSON.parse(body);
+
+		if (this.unsplashResponse.length < 9) {
+			console.log('less than 10');
+		}
+
+		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
+			return collection.title;
+		});
+
+		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
+	}
+
+
+	unsplashRandomPicturesCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
 		this.unsplashResponse = JSON.parse(body);
@@ -74,18 +78,18 @@ class Layout extends Component {
 	componentWillReceiveProps(next) {
 		switch (next.activeView) {
 			case 'collections':
-				this.callUnsplashCollection();
+				this.callUnsplashFeaturedCollection();
 				break;
 			case 'gallery':
-				this.callUnsplashRandom();
+				this.callUnsplashRandomPictures();
 				break;
 			case 'explore':
-				this.callUnsplashRandom();
-				this.callUnsplashCollection();
+				this.callUnsplashRandomPictures();
+				this.callUnsplashFeaturedCollection();
 				break;
 			default:
-				this.callUnsplashRandom();
-				this.callUnsplashCollection();
+				this.callUnsplashRandomPictures();
+				this.callUnsplashFeaturedCollection();
 		}
 	}
 
