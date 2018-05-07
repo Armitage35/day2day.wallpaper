@@ -41,6 +41,8 @@ class Layout extends Component {
 		if (error) throw new Error(error);
 		this.unsplashResponse = JSON.parse(body);
 
+		console.log(this.unsplashResponse);
+
 		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
 			return collection.title;
 		});
@@ -49,7 +51,7 @@ class Layout extends Component {
 	}
 
 	callUnsplashRandom = () => {
-		const options = { 
+		const options = {
 			...this.unsplashOptions,
 			qs: {
 				...this.unsplashOptions.qs,
@@ -58,7 +60,7 @@ class Layout extends Component {
 			},
 			url: 'https://api.unsplash.com/photos'
 		};
-		
+
 		request(options, this.unsplashRandomCallback);
 	}
 
@@ -70,13 +72,21 @@ class Layout extends Component {
 	}
 
 	componentWillReceiveProps(next) {
-		const options = {
-			collections: this.callUnsplashCollection(),
-			gallery: this.callUnsplashRandom()
-		};
-		
-		// eslint-disable-next-line
-		options[next.activeView];
+		switch (next.activeView) {
+			case 'collections':
+				this.callUnsplashCollection();
+				break;
+			case 'gallery':
+				this.callUnsplashRandom();
+				break;
+			case 'explore':
+				this.callUnsplashRandom();
+				this.callUnsplashCollection();
+				break;
+			default:
+				this.callUnsplashRandom();
+				this.callUnsplashCollection();
+		}
 	}
 
 	render() {
