@@ -1,12 +1,14 @@
 // variables
-
+@import '../../../../App.sass'
+$clearBlue: #1d89ff
 
 // classes
 .bttn-default
 	color: #fff
+	font-family: $fontStack
 
 .bttn-primary, .bttn, .bttn-lg, .bttn-md, .bttn-sm, .bttn-xs
-	color: #1d89ff
+	color: $clearBlue
 
 .bttn, .bttn-lg, .bttn-md, .bttn-sm, .bttn-xs
 	margin: 0
@@ -52,10 +54,10 @@
 	padding: 5px 12px
 	z-index: 0
 	overflow: hidden
-	border: 1px solid #1d89ff
+	border: 1px solid $clearBlue
 	border-radius: 0px
 	background: #fff
-	color: #1d89ff
+	color: $clearBlue
 	-webkit-transition: color 0.3s cubic-bezier(0.02, 0.01, 0.47, 1), border-color 0.3s cubic-bezier(0.02, 0.01, 0.47, 1)
 	transition: color 0.3s cubic-bezier(0.02, 0.01, 0.47, 1), border-color 0.3s cubic-bezier(0.02, 0.01, 0.47, 1)
 	&:before
@@ -92,7 +94,7 @@
 		transform: translate3d(110%, -10%, 0) skewX(-20deg)
 	&:hover, &:focus
 		box-shadow: 0 1px 8px rgba(58, 51, 53, 0.3)
-		color: #1d89ff
+		color: $clearBlue
 		-webkit-transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1)
 		transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1)
 	&:hover:before, &:focus:before
@@ -136,25 +138,25 @@
 		&:hover, &:focus
 			box-shadow: 0 1px 10px rgba(58, 51, 53, 0.3)
 	&.bttn-default
-		border-color: #1d89ff
-		color: #1d89ff
+		border-color: $clearBlue
+		color: $clearBlue
 		&:hover, &:focus
 			background: #d6e3ff
-			color: #1d89ff
+			color: $clearBlue
 		&:before
 			background: #a7c3ff
 		&:after
 			background: #d6e3ff
 	&.bttn-primary
-		border-color: #1d89ff
-		color: #1d89ff
+		border-color: $clearBlue
+		color: $clearBlue
 		&:hover, &:focus
-			background: #1d89ff
+			background: $clearBlue
 			color: #fff
 		&:before
 			background: #006de3
 		&:after
-			background: #1d89ff
+			background: $clearBlue
 
 /*!
  *
