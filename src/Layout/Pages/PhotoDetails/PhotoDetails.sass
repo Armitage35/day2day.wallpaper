@@ -1,2 +1,14 @@
-// yolo
-.test
+@import '../../../App.sass'
+@import './PhotoButtons/uniteBttn.sass'
+
+// classes
+.PhotoDetails
+	@extend %pageContent-Contents
+	background-size: cover
+	height: 70vh
+	position: relative
+	
+.actionButtons
+	position: absolute
+	bottom: 0px
+	right: 0px //needs the parent to be position: relative in order for this to work

@@ -71,10 +71,6 @@ class Layout extends Component {
 		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
 	}
 
-	detailedPictureHandler = (event) => {
-		console.log('yolo');
-	}
-
 	componentWillReceiveProps(next) {
 		switch (next.activeView) {
 			case 'collections':
@@ -86,6 +82,8 @@ class Layout extends Component {
 			case 'explore':
 				this.callUnsplashRandomPictures();
 				this.callUnsplashFeaturedCollection();
+				break;
+			case 'detailedPhoto':
 				break;
 			default:
 				this.callUnsplashRandomPictures();
@@ -118,7 +116,7 @@ class Layout extends Component {
 						activeView = {this.props.activeView}
 						unsplashCollection = {this.state.unsplashCollection}
 						unsplashPictures = {this.state.unsplashPictures}
-						detailedPictureHandler = {this.detailedPictureHandler}
+						detailedPictureHandler = {this.props.detailedPictureHandler}
 					/>
 				</div>
 			</React.Fragment>

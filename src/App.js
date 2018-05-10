@@ -14,10 +14,15 @@ class App extends Component {
 		activeView: 'explore',
 	}
 
+	viewHandler = (newView) => {
+		this.setState({ activeView: newView });
+	}
+
 	activeViewHandler = (event) => {
 		let activeView = this.state.activeView;
 		activeView = event.target.id;
-		this.setState({ activeView: activeView });
+		// this.setState({ activeView: activeView });
+		this.viewHandler(activeView);
 	}
 
 	activeBackdropHandler = () => {
@@ -41,6 +46,11 @@ class App extends Component {
 		};
 	}
 
+	detailedPictureHandler = (event) => {
+		this.viewHandler('detailedPhoto');
+		console.log('active view: detailedPhoto');
+	}
+
 	componentDidMount() {
 		this.activeBackdropHandler();
 	}
@@ -54,6 +64,7 @@ class App extends Component {
 					activeView = {this.state.activeView}
 					backdropAuthor = {this.state.backdropAuthor}
 					viewHandler = {this.activeViewHandler}
+					detailedPictureHandler = {this.detailedPictureHandler}
 				/>
 			</div>
 		);

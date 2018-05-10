@@ -11,7 +11,7 @@ const Gallery = (props) => {
 	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
 	props.label !== undefined ? photoClass = 'explorePhoto' : photoClass = 'photo';
 
-	if (props.unsplashPictures !== undefined) {
+	if (props.unsplashPictures !== null) {
 		let pictures = props.unsplashPictures.map((photo, index) => {
 			let float;
 			float = index === props.unsplashPictures.length / 2 - 1 ? float = 'none' : float = 'left';

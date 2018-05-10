@@ -13,6 +13,7 @@ const Explore = (props) => {
 			<Gallery 
 				label = 'Photos'
 				unsplashPictures = {props.unsplashPictures}
+				detailedPictureHandler = {props.detailedPictureHandler}
 			/>
 		</div>
 	);
