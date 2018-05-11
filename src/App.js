@@ -14,15 +14,10 @@ class App extends Component {
 		activeView: 'explore',
 	}
 
-	viewHandler = (newView) => {
-		this.setState({ activeView: newView });
-	}
-
 	activeViewHandler = (event) => {
 		let activeView = this.state.activeView;
 		activeView = event.target.id;
-		// this.setState({ activeView: activeView });
-		this.viewHandler(activeView);
+		this.setState({ activeView: activeView });
 	}
 
 	activeBackdropHandler = () => {
@@ -31,7 +26,7 @@ class App extends Component {
 			options = {
 				method: 'GET',
 				url: 'https://api.unsplash.com/photos/random',
-				qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' },
+				qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
 			};
 
 		request(options, function(error, response, body) {
@@ -47,8 +42,10 @@ class App extends Component {
 	}
 
 	detailedPictureHandler = (event) => {
-		this.viewHandler('detailedPhoto');
+		console.log(event.target.id);
+		this.setState({activePicture: event.target.id, activeView: 'detailedPhoto'});
 	}
+
 
 	componentDidMount() {
 		this.activeBackdropHandler();
@@ -61,6 +58,7 @@ class App extends Component {
 				<Layout 
 					activeBackdrop = {this.state.activeBackdrop}
 					activeView = {this.state.activeView}
+					activePicture = {this.state.activePicture}
 					backdropAuthor = {this.state.backdropAuthor}
 					viewHandler = {this.activeViewHandler}
 					detailedPictureHandler = {this.detailedPictureHandler}
