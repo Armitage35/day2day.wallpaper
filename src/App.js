@@ -48,7 +48,6 @@ class App extends Component {
 
 	detailedPictureHandler = (event) => {
 		this.viewHandler('detailedPhoto');
-		console.log('active view: detailedPhoto');
 	}
 
 	componentDidMount() {

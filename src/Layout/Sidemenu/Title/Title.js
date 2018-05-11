@@ -9,12 +9,34 @@ const Title = (props) => {
 		collections: 'Most popular',
 		explore: 'Day2Day Wallpaper'
 	};
-	
+
 	let title;
-	props.activeView !== 'detailedPhoto' ? title = titleOptions[props.activeView] : title = props.pictureAuthor;
+
+	const pictureAuthorAvatar = () => {
+		if (props.activeView === 'detailedPhoto') {
+			let pictureAuthor = props.pictureAuthorAvatar;
+			console.log(pictureAuthor);
+			
+			let style = {
+				backgroundImage: "url(" + pictureAuthor + ")"
+			};
+			
+			return (
+				<div className='pictureAuthor' style={style}></div>
+			);
+		} 
+	};
+
+	if (props.activeView !== 'detailedPhoto') {
+		title = titleOptions[props.activeView];
+	}
+	else {
+		title = props.pictureAuthor;
+	}
 
 	return (
 		<Aux>
+			{pictureAuthorAvatar()}
 			<p className='title'>{title}</p>
 			<hr className='titleSeparator' />
 		</Aux>

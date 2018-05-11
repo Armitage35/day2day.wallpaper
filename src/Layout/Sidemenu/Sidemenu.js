@@ -22,6 +22,7 @@ const Sidemenu = (props) => {
 				<Title 
 					activeView = {props.activeView}
 					pictureAuthor = 'Erik Odin'
+					pictureAuthorAvatar = 'https://images.unsplash.com/photo-1495831121277-3e98a73382ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ffbdf1244b58972830ed68178045025&auto=format&fit=crop&w=1050&q=80'
 				/>  
 				<PictureDetails 
 					picturePublicationDate = '20 july 2018'

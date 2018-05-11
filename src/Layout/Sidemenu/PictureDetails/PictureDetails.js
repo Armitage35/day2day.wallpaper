@@ -1,31 +1,23 @@
 import React from 'react';
 import Aux from '../../../hoc/Aux.js';
+import './PictureDetails.css';
 
 const PictureDetails = (props) => {
-	
-	let values = {
-		publication: {
-			label: 'Published on',
-			value: props.picturePublicationDate
-		}, 
-		dimensions: {
-			label: 'Dimensions',
-			value: props.pictureDimensions
-		},
-		views: {
-			label: 'Views',
-			value: props.pictureViews
-		},
-		pictureDownloads: {
-			label: 'Downloads',
-			value: props.pictureDownloads
-		}
-	};
-	
-	let pictureMetaData =  values.map(information => {
-		console.log(information);
+
+	let values = [{ label: 'Published on', value: props.picturePublicationDate }, {
+		label: 'Dimensions',
+		value: props.pictureDimensions
+	}, {
+		label: 'Views',
+		value: props.pictureViews
+	}, {
+		label: 'Downloads',
+		value: props.pictureDownloads
+	}];
+
+	let pictureMetaData = values.map((information, index) => {
 		return (
-			<Aux>
+			<Aux key={index}>
 				<p className='label'>{information.label}</p>
 				<p className='pictureDetailsValue'>{information.value}</p>
 			</Aux>
