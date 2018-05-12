@@ -23,6 +23,7 @@ class Layout extends Component {
 
 	unsplashResponse;
 	popularCollectionsList;
+	unsplashUniquePicture;
 
 	unsplashOptions = {
 		method: 'GET',
@@ -36,6 +37,7 @@ class Layout extends Component {
 
 		request(options, this.unsplashFeaturedCollectionCallback);
 	}
+
 	// handle random pictures
 	callUnsplashRandomPictures = () => {
 		const options = {
@@ -55,10 +57,6 @@ class Layout extends Component {
 	unsplashFeaturedCollectionCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 		this.unsplashResponse = JSON.parse(body);
-
-		if (this.unsplashResponse.length < 9) {
-			console.log('less than 10');
-		}
 
 		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
 			return collection.title;
@@ -87,6 +85,8 @@ class Layout extends Component {
 				this.callUnsplashRandomPictures();
 				this.callUnsplashFeaturedCollection();
 				break;
+			case 'detailedPhoto':
+				break;
 			default:
 				this.callUnsplashRandomPictures();
 				this.callUnsplashFeaturedCollection();
@@ -100,27 +100,30 @@ class Layout extends Component {
 		else {
 			return (
 				<React.Fragment>
-				<Toolbar 
-					activeView = {this.props.activeView}
-					viewHandler = {this.props.viewHandler}
-				/>
-				<Backdrop 
-					activeBackdrop = {this.props.activeBackdrop} 
-				 	backdropAuthor = {this.props.backdropAuthor}
-				/>
-				<div className='pageContent'>
-					<Sidemenu 
-						popularCollectionsList = {this.popularCollectionsList}
-						activeView = {this.props.activeView} 
-
-					/>
-					<Pages 
+					<Toolbar
 						activeView = {this.props.activeView}
-						unsplashCollection = {this.state.unsplashCollection}
-						unsplashPictures = {this.state.unsplashPictures}
+						viewHandler = {this.props.viewHandler}
 					/>
-				</div>
-			</React.Fragment>
+					<Backdrop
+						activeBackdrop = {this.props.activeBackdrop}
+					 	backdropAuthor = {this.props.backdropAuthor}
+					/>
+					<div className='pageContent'>
+						<Sidemenu
+							activePicture = {this.props.activePicture}
+							activeView = {this.props.activeView}
+							popularCollectionsList = {this.popularCollectionsList}
+
+						/>
+						<Pages
+							activeView = {this.props.activeView}
+							activePicture = {this.props.activePicture}
+							unsplashCollection = {this.state.unsplashCollection}
+							unsplashPictures = {this.state.unsplashPictures}
+							detailedPictureHandler = {this.props.detailedPictureHandler}
+						/>
+					</div>
+				</React.Fragment>
 			);
 		}
 	}

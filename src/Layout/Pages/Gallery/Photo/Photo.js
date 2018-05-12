@@ -1,6 +1,6 @@
 import React from 'react';
 import './Photo.css';
-import Aux from '../../../../hoc/Aux.js';
+// import Aux from '../../../../hoc/Aux.js';
 
 const Photo = ( props ) => {
 	
@@ -9,11 +9,7 @@ const Photo = ( props ) => {
 		float: props.float
 	};
 	
-	return (
-		<Aux>
-			<div className={props.cssClass} style={style}></div>
-		</Aux>
-	);
+	return <div className={props.cssClass} id={props.photoId} onClick={props.detailedPictureHandler} style={style}></div>;
 };
 
 export default Photo;
