@@ -107,30 +107,30 @@ class Layout extends Component {
 		else {
 			return (
 				<React.Fragment>
-				<Toolbar
-					activeView = {this.props.activeView}
-					viewHandler = {this.props.viewHandler}
-				/>
-				<Backdrop
-					activeBackdrop = {this.props.activeBackdrop}
-				 	backdropAuthor = {this.props.backdropAuthor}
-				/>
-				<div className='pageContent'>
-					<Sidemenu
-						activePicture = {this.props.activePicture}
+					<Toolbar
 						activeView = {this.props.activeView}
-						popularCollectionsList = {this.popularCollectionsList}
+						viewHandler = {this.props.viewHandler}
+					/>
+					<Backdrop
+						activeBackdrop = {this.props.activeBackdrop}
+					 	backdropAuthor = {this.props.backdropAuthor}
+					/>
+					<div className='pageContent'>
+						<Sidemenu
+							activePicture = {this.props.activePicture}
+							activeView = {this.props.activeView}
+							popularCollectionsList = {this.popularCollectionsList}
 
-					/>
-					<Pages
-						activeView = {this.props.activeView}
-						activePicture = {this.props.activePicture}
-						unsplashCollection = {this.state.unsplashCollection}
-						unsplashPictures = {this.state.unsplashPictures}
-						detailedPictureHandler = {this.props.detailedPictureHandler}
-					/>
-				</div>
-			</React.Fragment>
+						/>
+						<Pages
+							activeView = {this.props.activeView}
+							activePicture = {this.props.activePicture}
+							unsplashCollection = {this.state.unsplashCollection}
+							unsplashPictures = {this.state.unsplashPictures}
+							detailedPictureHandler = {this.props.detailedPictureHandler}
+						/>
+					</div>
+				</React.Fragment>
 			);
 		}
 	}

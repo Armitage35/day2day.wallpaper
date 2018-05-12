@@ -72,7 +72,6 @@ class App extends Component {
 		this.activeBackdropHandler();
 	}
 
-
 	render() {
 		return (
 			<div className="App">

@@ -1,8 +1,8 @@
 import React from 'react';
-import './PhotoDetails.css';
 import heart from './PhotoButtons/icons/heart.js';
 import Download from './PhotoButtons/icons/Download.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
+import './PhotoDetails.css';
 
 const PhotoDetails = (props) => {
 
