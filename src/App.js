@@ -47,7 +47,7 @@ class App extends Component {
 	}
 
 	detailedPictureHandler = (event) => {
-		this.setState({ activeView: 'detailedPhoto' });
+		this.setState({ activeView: 'detailedPhoto', activePicture: null });
 
 		this.callUnsplashUniquePicture(event.target.id);
 	}
