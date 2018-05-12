@@ -73,13 +73,6 @@ class Layout extends Component {
 		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
 	}
 
-	unsplashRandomPicturesCallback = (error, response, body) => {
-		if (error) throw new Error(error);
-
-		this.unsplashResponse = JSON.parse(body);
-		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
-	}
-
 	componentWillReceiveProps(next) {
 		switch (next.activeView) {
 			case 'collections':
