@@ -37,8 +37,8 @@ const Sidemenu = (props) => {
 						picturePublicationDate = {transformedPicturePublicationDate}
 						pictureDimensions = {props.activePicture.height + ' x ' + props.activePicture.width}
 						pictureViews = {props.activePicture.views}
-						pictureDownloads = {props.activePicture.downloads
-	}
+						pictureDownloads = {props.activePicture.downloads}
+						unsplashLink = {props.activePicture.user.links.html}
 					/>
 				</div>
 			);

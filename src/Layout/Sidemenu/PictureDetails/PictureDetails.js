@@ -3,8 +3,17 @@ import Aux from '../../../hoc/Aux.js';
 import './PictureDetails.css';
 
 const PictureDetails = (props) => {
-
-	let values = [{ label: 'Published on', value: props.picturePublicationDate }, {
+	let referralLink = () => {
+		
+		let link = props.unsplashLink + '?utm_source=day2day.wallpaper&utm_medium=referral';
+		
+		return <a href={link} target='_blank' className='referralLink'>See on Unsplash</a>;
+	};
+	
+	let values = [{
+		label: 'Published on',
+		value: props.picturePublicationDate
+	}, {
 		label: 'Dimensions',
 		value: props.pictureDimensions
 	}, {
@@ -27,6 +36,7 @@ const PictureDetails = (props) => {
 	return (
 		<Aux>
 			{pictureMetaData}
+			{referralLink()}
 		</Aux>
 	);
 };
