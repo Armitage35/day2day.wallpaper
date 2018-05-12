@@ -10,7 +10,7 @@ class App extends Component {
 		activeBackdrop: '',
 		backdropAuthor: '',
 		activeCollection: '',
-		activePicture: '',
+		activePicture: null,
 		activeView: 'explore',
 	}
 
@@ -19,6 +19,11 @@ class App extends Component {
 		activeView = event.target.id;
 		this.setState({ activeView: activeView });
 	}
+
+	unsplashOptions = {
+		method: 'GET',
+		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
+	};
 
 	activeBackdropHandler = () => {
 		let unsplashBackdrop,
@@ -42,10 +47,26 @@ class App extends Component {
 	}
 
 	detailedPictureHandler = (event) => {
-		console.log(event.target.id);
-		this.setState({activePicture: event.target.id, activeView: 'detailedPhoto'});
+		this.setState({ activeView: 'detailedPhoto' });
+
+		this.callUnsplashUniquePicture(event.target.id);
 	}
 
+	// handle unique (individual) picture
+	callUnsplashUniquePicture = (photoID) => {
+		const options = {
+			...this.unsplashOptions,
+			url: 'https://api.unsplash.com/photos/' + photoID
+		};
+
+		request(options, this.callUnsplashUniquePictureCallback);
+	};
+
+	callUnsplashUniquePictureCallback = (error, response, body) => {
+		if (error) throw new Error(error);
+
+		this.setState({activePicture: JSON.parse(body)});
+	};
 
 	componentDidMount() {
 		this.activeBackdropHandler();
@@ -55,7 +76,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Layout 
+				<Layout
 					activeBackdrop = {this.state.activeBackdrop}
 					activeView = {this.state.activeView}
 					activePicture = {this.state.activePicture}

@@ -23,6 +23,7 @@ class Layout extends Component {
 
 	unsplashResponse;
 	popularCollectionsList;
+	unsplashUniquePicture;
 
 	unsplashOptions = {
 		method: 'GET',
@@ -36,6 +37,7 @@ class Layout extends Component {
 
 		request(options, this.unsplashFeaturedCollectionCallback);
 	}
+
 	// handle random pictures
 	callUnsplashRandomPictures = () => {
 		const options = {
@@ -71,6 +73,13 @@ class Layout extends Component {
 		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
 	}
 
+	unsplashRandomPicturesCallback = (error, response, body) => {
+		if (error) throw new Error(error);
+
+		this.unsplashResponse = JSON.parse(body);
+		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
+	}
+
 	componentWillReceiveProps(next) {
 		switch (next.activeView) {
 			case 'collections':
@@ -98,22 +107,24 @@ class Layout extends Component {
 		else {
 			return (
 				<React.Fragment>
-				<Toolbar 
+				<Toolbar
 					activeView = {this.props.activeView}
 					viewHandler = {this.props.viewHandler}
 				/>
-				<Backdrop 
-					activeBackdrop = {this.props.activeBackdrop} 
+				<Backdrop
+					activeBackdrop = {this.props.activeBackdrop}
 				 	backdropAuthor = {this.props.backdropAuthor}
 				/>
 				<div className='pageContent'>
-					<Sidemenu 
+					<Sidemenu
+						activePicture = {this.props.activePicture}
+						activeView = {this.props.activeView}
 						popularCollectionsList = {this.popularCollectionsList}
-						activeView = {this.props.activeView} 
 
 					/>
-					<Pages 
+					<Pages
 						activeView = {this.props.activeView}
+						activePicture = {this.props.activePicture}
 						unsplashCollection = {this.state.unsplashCollection}
 						unsplashPictures = {this.state.unsplashPictures}
 						detailedPictureHandler = {this.props.detailedPictureHandler}

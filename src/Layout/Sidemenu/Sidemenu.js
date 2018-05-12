@@ -3,35 +3,46 @@ import Title from './Title/Title.js';
 import PopularCollections from './PopularCollections/PopularCollections.js';
 import PictureDetails from './PictureDetails/PictureDetails.js';
 import './Sidemenu.css';
+import Spinner from '../../UtilitiesComponents/Spinner.js';
 
 const Sidemenu = (props) => {
 	if (props.activeView !== 'detailedPhoto') {
 		return (
 			<div className='sidemenu'>
-				<Title 
+				<Title
 					activeView = {props.activeView}
-				/>  
+				/>
 				<PopularCollections
 					popularCollectionsList = { props.popularCollectionsList }
 				/>
 			</div>
 		);
-	} else {
-		return (
-			<div className='sidemenu'>
-				<Title 
-					activeView = {props.activeView}
-					pictureAuthor = 'Erik Odin'
-					pictureAuthorAvatar = 'https://images.unsplash.com/photo-1495831121277-3e98a73382ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ffbdf1244b58972830ed68178045025&auto=format&fit=crop&w=1050&q=80'
-				/>  
-				<PictureDetails 
-					picturePublicationDate = '20 july 2018'
-					pictureDimensions = '4097 × 2731'
-					pictureViews = '2,309'
-					pictureDownloads = '1,854'
-				/>
-			</div>
-		);
+	}
+	else {
+		if (props.activePicture === null) {
+			return <Spinner />;
+		}
+		else {
+			const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+			let transformedPicturePublicationDate = new Date(props.activePicture.created_at).toLocaleDateString('en-EN', dateOptions);
+
+			return (
+				<div className='sidemenu'>
+					<Title
+						activeView = {props.activeView}
+						pictureAuthor = {props.activePicture.user.name}
+						pictureAuthorAvatar = {props.activePicture.user.profile_image.large}
+					/>
+					<PictureDetails
+						picturePublicationDate = {transformedPicturePublicationDate}
+						pictureDimensions = {props.activePicture.height + ' x ' + props.activePicture.width}
+						pictureViews = {props.activePicture.views}
+						pictureDownloads = {props.activePicture.downloads
+	}
+					/>
+				</div>
+			);
+		}
 	}
 };
 

@@ -24,7 +24,9 @@ const Pages = (props) => {
 				detailedPictureHandler = {props.detailedPictureHandler}
 			/>;
 		case 'detailedPhoto':
-			return <PhotoDetails />;
+			return <PhotoDetails 
+				activePicture = {props.activePicture}
+			/>;
 		default:
 			return <Gallery />;
 	}

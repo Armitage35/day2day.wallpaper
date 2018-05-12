@@ -15,8 +15,7 @@ const Title = (props) => {
 	const pictureAuthorAvatar = () => {
 		if (props.activeView === 'detailedPhoto') {
 			let pictureAuthor = props.pictureAuthorAvatar;
-			console.log(pictureAuthor);
-			
+
 			let style = {
 				backgroundImage: "url(" + pictureAuthor + ")"
 			};
