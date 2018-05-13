@@ -51,9 +51,9 @@ class App extends Component {
 
 		this.callUnsplashUniquePicture(event.target.id);
 	}
-	
+
 	detailedCollectionHandler = (event) => {
-		console.log(event.target);
+		console.log(event.target.id);
 	}
 
 	// handle unique (individual) picture
@@ -69,7 +69,7 @@ class App extends Component {
 	callUnsplashUniquePictureCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
-		this.setState({activePicture: JSON.parse(body)});
+		this.setState({ activePicture: JSON.parse(body) });
 	};
 
 	componentDidMount() {

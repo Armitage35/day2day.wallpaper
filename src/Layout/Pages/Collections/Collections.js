@@ -7,7 +7,7 @@ const Collections = (props) => {
 
 	let collections,
 		label;
-		
+
 	// Label handling for explore view
 	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
 
@@ -25,7 +25,7 @@ const Collections = (props) => {
 					cover = {collection.cover_photo.urls.small}
 					detailedCollectionHandler = {props.detailedCollectionHandler}
 					float = {float}
-					id = {collection.title.replace(/ /g,"_")}
+					id = {collection.id}
 					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
 					topThumbnail = {collection.preview_photos[1].urls.thumb}
 					key = {index}

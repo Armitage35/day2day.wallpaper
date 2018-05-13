@@ -44,7 +44,7 @@ class Layout extends Component {
 		this.unsplashResponse = JSON.parse(body);
 
 		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
-			return collection.title;
+			return [collection.id, collection.title];
 		});
 
 		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
@@ -110,6 +110,7 @@ class Layout extends Component {
 						<Sidemenu
 							activePicture = {this.props.activePicture}
 							activeView = {this.props.activeView}
+							detailedCollectionHandler = {this.props.detailedCollectionHandler}
 							popularCollectionsList = {this.popularCollectionsList}
 
 						/>

@@ -13,6 +13,7 @@ const Sidemenu = (props) => {
 					activeView = {props.activeView}
 				/>
 				<PopularCollections
+					detailedCollectionHandler = {props.detailedCollectionHandler}
 					popularCollectionsList = { props.popularCollectionsList }
 				/>
 			</div>
