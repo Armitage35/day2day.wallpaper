@@ -11,7 +11,7 @@ const Collections = (props) => {
 	// Label handling for explore view
 	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
 
-	if (props.unsplashCollection === '') {
+	if (props.unsplashCollection === null) {
 		return <Spinner />;
 	}
 	else {

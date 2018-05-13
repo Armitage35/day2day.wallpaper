@@ -17,7 +17,7 @@ class Layout extends Component {
 
 	state = {
 		ready: false,
-		unsplashCollection: '',
+		unsplashCollection: null,
 		unsplashPictures: null
 	};
 
@@ -55,13 +55,12 @@ class Layout extends Component {
 		const options = {
 			...this.unsplashOptions,
 			qs: {
-				...this.unsplashOptions.qs,
 				count: '20',
-				orientation: 'landscape'
+				orientation: 'landscape',
+				...this.unsplashOptions.qs
 			},
 			url: 'https://api.unsplash.com/photos'
 		};
-
 		request(options, this.unsplashRandomPicturesCallback);
 	}
 

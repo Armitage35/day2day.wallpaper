@@ -18,7 +18,7 @@ const Gallery = (props) => {
 			return <Photo 
 				cssClass = {photoClass}
 				float = {float}
-				url = {photo.urls.thumb}
+				url = {photo.urls.small}
 				key = {index}
 				photoId = {photo.id}
 				detailedPictureHandler = {props.detailedPictureHandler}

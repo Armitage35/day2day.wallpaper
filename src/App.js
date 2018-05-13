@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Layout from './Layout/Layout.js';
 
-var request = require("request");
+const request = require('request');
 
 class App extends Component {
 
 	state = {
-		activeBackdrop: '',
-		backdropAuthor: '',
-		activeCollection: '',
+		activeBackdrop: null,
+		backdropAuthor: null,
+		activeCollection: null,
 		activePicture: null,
 		activeView: 'explore',
 	}
