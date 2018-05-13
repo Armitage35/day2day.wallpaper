@@ -1,9 +1,10 @@
 import React from 'react';
-import Download from './PhotoButtons/icons/Download.js';
+import DownloadIcon from './PhotoButtons/icons/DownloadIcon.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 import './PhotoDetails.css';
 
 const PhotoDetails = (props) => {
+
 	const buttonClasses = 'bttn-unite bttn-md bttn-primary';
 
 	const setAsWallpaper = () => {
@@ -15,7 +16,7 @@ const PhotoDetails = (props) => {
 	}
 	else {
 		const downloadButton = () => {
-			return <a href={props.activePicture.links.download} target='_blank'><button className={buttonClasses}> {Download}</button></a>;
+			return <a href={props.activePicture.links.download + '?utm_source=day2day.wallpaper&utm_medium=referral'} target='_blank'><button className={buttonClasses}> {DownloadIcon}</button></a>;
 		};
 
 		const backgroundStyle = {
