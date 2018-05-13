@@ -6,7 +6,7 @@ import Sidemenu from './Sidemenu/Sidemenu.js';
 import Spinner from '../UtilitiesComponents/Spinner.js';
 import './Layout.css';
 
-var request = require("request");
+const request = require('request');
 
 class Layout extends Component {
 	constructor() {
@@ -18,7 +18,7 @@ class Layout extends Component {
 	state = {
 		ready: false,
 		unsplashCollection: '',
-		unsplashPictures: null,
+		unsplashPictures: null
 	};
 
 	unsplashResponse;
@@ -38,6 +38,18 @@ class Layout extends Component {
 		request(options, this.unsplashFeaturedCollectionCallback);
 	}
 
+	// handle featured pictures
+	unsplashFeaturedCollectionCallback = (error, response, body) => {
+		if (error) throw new Error(error);
+		this.unsplashResponse = JSON.parse(body);
+
+		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
+			return collection.title;
+		});
+
+		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
+	}
+
 	// handle random pictures
 	callUnsplashRandomPictures = () => {
 		const options = {
@@ -52,19 +64,6 @@ class Layout extends Component {
 
 		request(options, this.unsplashRandomPicturesCallback);
 	}
-
-	// handle curated pictures
-	unsplashFeaturedCollectionCallback = (error, response, body) => {
-		if (error) throw new Error(error);
-		this.unsplashResponse = JSON.parse(body);
-
-		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
-			return collection.title;
-		});
-
-		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
-	}
-
 
 	unsplashRandomPicturesCallback = (error, response, body) => {
 		if (error) throw new Error(error);
