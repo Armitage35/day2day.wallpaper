@@ -1,28 +1,31 @@
 import React from 'react';
-import heart from './PhotoButtons/icons/heart.js';
 import Download from './PhotoButtons/icons/Download.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 import './PhotoDetails.css';
 
 const PhotoDetails = (props) => {
 
-	const actions = [Download, heart, 'Set as wallpaper'];
-
-	let buttons = actions.map((button, index) => {
-		return <button className="bttn-unite bttn-md bttn-primary" key={index}>{button}</button>;
-	});
+	const setAsWallpaper = () => {
+		return <button className="bttn-unite bttn-md bttn-primary"> 'Set as wallpaper'</button>;
+	};
 
 	if (props.activePicture === null) {
 		return <Spinner />;
 	}
 	else {
-		const style = {
+		const downloadButton = () => {
+			return <a href={props.activePicture.links.download} target='_blank'><button className="bttn-unite bttn-md bttn-primary"> {Download}</button></a>;
+		};
+
+		const backgroundStyle = {
 			backgroundImage: 'url("' + props.activePicture.urls.regular + '")'
 		};
+
 		return (
-			<div className='PhotoDetails' style={style}>
+			<div className='PhotoDetails' style={backgroundStyle}>
 				<div className='actionButtons'>
-					{buttons}
+					{downloadButton()}
+					{setAsWallpaper()}
 				</div>
 			</div>
 		);
