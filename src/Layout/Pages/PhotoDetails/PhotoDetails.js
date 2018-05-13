@@ -4,9 +4,10 @@ import Spinner from '../../../UtilitiesComponents/Spinner.js';
 import './PhotoDetails.css';
 
 const PhotoDetails = (props) => {
+	const buttonClasses = 'bttn-unite bttn-md bttn-primary';
 
 	const setAsWallpaper = () => {
-		return <button className="bttn-unite bttn-md bttn-primary"> 'Set as wallpaper'</button>;
+		return <button className={buttonClasses}>Set as wallpaper</button>;
 	};
 
 	if (props.activePicture === null) {
@@ -14,7 +15,7 @@ const PhotoDetails = (props) => {
 	}
 	else {
 		const downloadButton = () => {
-			return <a href={props.activePicture.links.download} target='_blank'><button className="bttn-unite bttn-md bttn-primary"> {Download}</button></a>;
+			return <a href={props.activePicture.links.download} target='_blank'><button className={buttonClasses}> {Download}</button></a>;
 		};
 
 		const backgroundStyle = {
