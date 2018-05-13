@@ -116,9 +116,10 @@ class Layout extends Component {
 						<Pages
 							activeView = {this.props.activeView}
 							activePicture = {this.props.activePicture}
+							detailedPictureHandler = {this.props.detailedPictureHandler}
+							detailedCollectionHandler = {this.props.detailedCollectionHandler}
 							unsplashCollection = {this.state.unsplashCollection}
 							unsplashPictures = {this.state.unsplashPictures}
-							detailedPictureHandler = {this.props.detailedPictureHandler}
 						/>
 					</div>
 				</React.Fragment>

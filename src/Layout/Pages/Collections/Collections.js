@@ -22,11 +22,12 @@ const Collections = (props) => {
 			return (
 				<Collection
 					collectionName = {collection.title}
-					float = {float}
 					cover = {collection.cover_photo.urls.small}
+					detailedCollectionHandler = {props.detailedCollectionHandler}
+					float = {float}
 					id = {collection.title.replace(/ /g,"_")}
-					topThumbnail = {collection.preview_photos[1].urls.thumb}
 					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
+					topThumbnail = {collection.preview_photos[1].urls.thumb}
 					key = {index}
 				/>
 			);

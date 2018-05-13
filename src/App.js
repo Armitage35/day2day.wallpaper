@@ -51,6 +51,10 @@ class App extends Component {
 
 		this.callUnsplashUniquePicture(event.target.id);
 	}
+	
+	detailedCollectionHandler = (event) => {
+		console.log(event.target);
+	}
 
 	// handle unique (individual) picture
 	callUnsplashUniquePicture = (photoID) => {
@@ -80,8 +84,9 @@ class App extends Component {
 					activeView = {this.state.activeView}
 					activePicture = {this.state.activePicture}
 					backdropAuthor = {this.state.backdropAuthor}
-					viewHandler = {this.activeViewHandler}
+					detailedCollectionHandler = {this.detailedCollectionHandler}
 					detailedPictureHandler = {this.detailedPictureHandler}
+					viewHandler = {this.activeViewHandler}
 				/>
 			</div>
 		);

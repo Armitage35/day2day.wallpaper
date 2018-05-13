@@ -7,6 +7,7 @@ const Explore = (props) => {
 	return (
 		<div className='Explore'>
 			<Collections 
+				detailedCollectionHandler = {props.detailedCollectionHandler}
 				label = 'Collections'
 				unsplashCollection = {props.unsplashCollection}
 			/>

@@ -20,7 +20,7 @@ const Collection = ( props ) => {
 	};
 	
 	return (
-		<div className='Collection' style= {style} id= {props.id}>
+		<div className='Collection' style={style} id={props.id} onClick={props.detailedCollectionHandler}>
 			<div style= {collectionCoverStyle} className='coverCollection'> 
 				<p className='collectionTile'>{props.collectionName}</p> 
 			</div>

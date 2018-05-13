@@ -10,6 +10,7 @@ const Pages = (props) => {
 			return (
 				<Collections 
 					unsplashCollection = {props.unsplashCollection}
+					detailedCollectionHandler = {props.detailedCollectionHandler}
 				/>
 			);
 		case 'gallery':
@@ -21,6 +22,7 @@ const Pages = (props) => {
 			return <Explore 
 				unsplashCollection = {props.unsplashCollection}
 				unsplashPictures = {props.unsplashPictures}
+				detailedCollectionHandler = {props.detailedCollectionHandler}
 				detailedPictureHandler = {props.detailedPictureHandler}
 			/>;
 		case 'detailedPhoto':
