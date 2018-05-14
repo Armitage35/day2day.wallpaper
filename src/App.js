@@ -10,6 +10,7 @@ class App extends Component {
 		activeBackdrop: null,
 		backdropAuthor: null,
 		activeCollection: null,
+		activeCollectionName: null,
 		activePicture: null,
 		activeView: 'explore',
 	}
@@ -43,6 +44,7 @@ class App extends Component {
 
 		request(options, function(error, response, body) {
 			if (error) throw new Error(error);
+
 			unsplashBackdrop = JSON.parse(body).urls.regular;
 			backdropAuthor = JSON.parse(body).user.name;
 			updateBackdrop();
@@ -60,7 +62,8 @@ class App extends Component {
 	}
 
 	detailedCollectionHandler = (event) => {
-		this.setState({ activeCollection: event.target.id, activeView: 'gallery' });
+		let collectionName = event.target.getAttribute('data-collection_name');
+		this.setState({ activeCollection: event.target.id, activeView: 'gallery', activeCollectionName: collectionName });
 	}
 
 	// handle unique (individual) picture
@@ -90,6 +93,7 @@ class App extends Component {
 					activeBackdrop = {this.state.activeBackdrop}
 					activeView = {this.state.activeView}
 					activeCollection = {this.state.activeCollection}
+					activeCollectionName = {this.state.activeCollectionName}
 					activePicture = {this.state.activePicture}
 					backdropAuthor = {this.state.backdropAuthor}
 					detailedCollectionHandler = {this.detailedCollectionHandler}

@@ -45,7 +45,7 @@ class Layout extends Component {
 		if (error) throw new Error(error);
 		this.unsplashResponse = JSON.parse(body);
 
-		this.popularCollectionsList = this.unsplashResponse.map((collection, index) => {
+		this.popularCollectionsList = this.unsplashResponse.map(collection => {
 			return [collection.id, collection.title];
 		});
 
@@ -80,6 +80,7 @@ class Layout extends Component {
 		else if (nextActiveCollection !== undefined) {
 			// this removes current saved pictures in gallery so as not to have pictures jump on load
 			this.setState({ unsplashPictures: null, unsplashCollection: null });
+
 			// this needs to be here as it required the nextActiveCollection value in order to function
 			this.optionsForSpecificCollection.url = 'https://api.unsplash.com/collections/' + nextActiveCollection + '/photos';
 
@@ -134,6 +135,7 @@ class Layout extends Component {
 						<Sidemenu
 							activePicture = {this.props.activePicture}
 							activeView = {this.props.activeView}
+							activeCollectionName = {this.props.activeCollectionName}
 							detailedCollectionHandler = {this.props.detailedCollectionHandler}
 							popularCollectionsList = {this.popularCollectionsList}
 

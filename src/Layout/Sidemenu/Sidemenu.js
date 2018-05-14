@@ -10,6 +10,7 @@ const Sidemenu = (props) => {
 		return (
 			<div className='sidemenu'>
 				<Title
+					activeCollectionName = {props.activeCollectionName}
 					activeView = {props.activeView}
 				/>
 				<PopularCollections

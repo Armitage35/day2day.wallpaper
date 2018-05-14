@@ -7,11 +7,10 @@ const Title = (props) => {
 	const titleOptions = {
 		gallery: 'Popular pictures',
 		collections: 'Most popular',
-		explore: 'Day2Day Wallpaper'
+		explore: 'Day2Day Wallpaper',
 	};
 
 	let title;
-
 	const pictureAuthorAvatar = () => {
 		if (props.activeView === 'detailedPhoto') {
 			let pictureAuthor = props.pictureAuthorAvatar;
@@ -19,14 +18,17 @@ const Title = (props) => {
 			let style = {
 				backgroundImage: "url(" + pictureAuthor + ")"
 			};
-			
+
 			return (
 				<div className='pictureAuthor' style={style}></div>
 			);
-		} 
+		}
 	};
 
-	if (props.activeView !== 'detailedPhoto') {
+	if (props.activeView === 'gallery') {
+		props.activeCollectionName !== null ? title = props.activeCollectionName : title = props.activeCollectionName;
+	}
+	else if (props.activeView !== 'detailedPhoto') {
 		title = titleOptions[props.activeView];
 	}
 	else {
