@@ -52,20 +52,40 @@ class Layout extends Component {
 		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
 	}
 
-	// handle random pictures
-	callUnsplashRandomPictures = () => {
-		const options = {
-			...this.unsplashOptions,
-			qs: {
-				count: '20',
-				orientation: 'landscape',
-				...this.unsplashOptions.qs
-			},
-			url: 'https://api.unsplash.com/photos/random'
-		};
+	optionsForRandomPictures = {
+		...this.unsplashOptions,
+		qs: {
+			count: '20',
+			orientation: 'landscape',
+			...this.unsplashOptions.qs
+		},
+		url: 'https://api.unsplash.com/photos/random'
+	};
 
-		if (this.state.unsplashPictures === null) {
-			request(options, this.unsplashRandomPicturesCallback);
+
+	optionsForSpecificCollection = {
+		...this.unsplashOptions,
+		qs: {
+			count: '20',
+			orientation: 'landscape',
+			...this.unsplashOptions.qs
+		}
+	};
+
+	// handle random pictures
+	callUnsplashRandomPictures = (nextActiveCollection) => {
+
+		if (nextActiveCollection === undefined) {
+			request(this.optionsForRandomPictures, this.unsplashRandomPicturesCallback);
+		}
+		else if (nextActiveCollection !== undefined) {
+			// this removes current saved pictures in gallery so as not to have pictures jump on load
+			this.setState({ unsplashPictures: null });
+
+			// this needs to be here as it required the nextActiveCollection value in order to function
+			this.optionsForSpecificCollection.url = 'https://api.unsplash.com/collections/' + nextActiveCollection + '/photos';
+
+			request(this.optionsForSpecificCollection, this.unsplashRandomPicturesCallback);
 		}
 	}
 
@@ -82,16 +102,17 @@ class Layout extends Component {
 				this.callUnsplashFeaturedCollection();
 				break;
 			case 'gallery':
-				this.callUnsplashRandomPictures();
+				this.callUnsplashRandomPictures(next.activeCollection);
 				break;
 			case 'explore':
+				this.setState({ unsplashPictures: null }); //also to prevent gallery pictures from jumping
 				this.callUnsplashRandomPictures();
 				this.callUnsplashFeaturedCollection();
 				break;
 			case 'detailedPhoto':
 				break;
 			default:
-				this.callUnsplashRandomPictures();
+				this.callUnsplashRandomPictures(next.activeCollection);
 				this.callUnsplashFeaturedCollection();
 		}
 	}

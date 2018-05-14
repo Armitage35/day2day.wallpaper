@@ -53,7 +53,7 @@ class App extends Component {
 	}
 
 	detailedCollectionHandler = (event) => {
-		console.log(event.target.id);
+		this.setState({ activeCollection: event.target.id, activeView: 'gallery' });
 	}
 
 	// handle unique (individual) picture
@@ -82,6 +82,7 @@ class App extends Component {
 				<Layout
 					activeBackdrop = {this.state.activeBackdrop}
 					activeView = {this.state.activeView}
+					activeCollection = {this.state.activeCollection}
 					activePicture = {this.state.activePicture}
 					backdropAuthor = {this.state.backdropAuthor}
 					detailedCollectionHandler = {this.detailedCollectionHandler}
