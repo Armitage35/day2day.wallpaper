@@ -7,7 +7,7 @@ const Gallery = (props) => {
 
 	let label,
 		photoClass;
-		
+
 	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
 	props.label !== undefined ? photoClass = 'explorePhoto' : photoClass = 'photo';
 

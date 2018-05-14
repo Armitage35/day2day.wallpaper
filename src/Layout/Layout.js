@@ -59,7 +59,7 @@ class Layout extends Component {
 			orientation: 'landscape',
 			...this.unsplashOptions.qs
 		},
-		url: 'https://api.unsplash.com/photos/random'
+		url: 'https://api.unsplash.com/photos/'
 	};
 
 
@@ -74,14 +74,12 @@ class Layout extends Component {
 
 	// handle random pictures
 	callUnsplashRandomPictures = (nextActiveCollection) => {
-
-		if (nextActiveCollection === undefined) {
+		if (nextActiveCollection === null || nextActiveCollection === undefined) {
 			request(this.optionsForRandomPictures, this.unsplashRandomPicturesCallback);
 		}
 		else if (nextActiveCollection !== undefined) {
 			// this removes current saved pictures in gallery so as not to have pictures jump on load
-			this.setState({ unsplashPictures: null });
-
+			this.setState({ unsplashPictures: null, unsplashCollection: null });
 			// this needs to be here as it required the nextActiveCollection value in order to function
 			this.optionsForSpecificCollection.url = 'https://api.unsplash.com/collections/' + nextActiveCollection + '/photos';
 

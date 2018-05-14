@@ -18,6 +18,13 @@ class App extends Component {
 		let activeView = this.state.activeView;
 		activeView = event.target.id;
 		this.setState({ activeView: activeView });
+		if (event.target.id === 'gallery') {
+			this.resetActiveCollection();
+		}
+	}
+
+	resetActiveCollection = () => {
+		this.setState({ activeCollection: null });
 	}
 
 	unsplashOptions = {
