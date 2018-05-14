@@ -11,7 +11,7 @@ const PopularCollections = (props) => {
 			if (key < 4) {
 				return (<p key={key} className='popularCollectionsList' onClick={props.detailedCollectionHandler} id={collection[0]}>{collection[1]}</p>);
 			}
-			else { return '' }
+			else { return null }
 		});
 	}
 

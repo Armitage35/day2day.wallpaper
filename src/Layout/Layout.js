@@ -35,7 +35,9 @@ class Layout extends Component {
 			url: 'https://api.unsplash.com/collections/featured'
 		};
 
-		request(options, this.unsplashFeaturedCollectionCallback);
+		if (this.state.unsplashCollection === null) {
+			request(options, this.unsplashFeaturedCollectionCallback);
+		}
 	}
 
 	// handle featured pictures
@@ -59,9 +61,12 @@ class Layout extends Component {
 				orientation: 'landscape',
 				...this.unsplashOptions.qs
 			},
-			url: 'https://api.unsplash.com/photos'
+			url: 'https://api.unsplash.com/photos/random'
 		};
-		request(options, this.unsplashRandomPicturesCallback);
+
+		if (this.state.unsplashPictures === null) {
+			request(options, this.unsplashRandomPicturesCallback);
+		}
 	}
 
 	unsplashRandomPicturesCallback = (error, response, body) => {
