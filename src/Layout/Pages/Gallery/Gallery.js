@@ -5,8 +5,9 @@ import './Gallery.css';
 
 const Gallery = (props) => {
 
-	let label;
-	let photoClass;
+	let label,
+		photoClass,
+		photoSize;
 
 	if (props.label !== undefined) {
 		label = <p className='exploreLabel'>{props.label}</p>;
@@ -22,6 +23,8 @@ const Gallery = (props) => {
 		photoClass = 'photo';
 	};
 
+	props.activeView === 'gallery' ? photoSize = 'small' : photoSize = 'thumb';
+
 	if (props.unsplashPictures !== null) {
 		let pictures = props.unsplashPictures.map((photo, index) => {
 			let float;
@@ -29,7 +32,7 @@ const Gallery = (props) => {
 			return <Photo 
 				cssClass = {photoClass}
 				float = {float}
-				url = {photo.urls.small}
+				url = {photo.urls[photoSize]}
 				key = {index}
 				photoId = {photo.id}
 				detailedPictureHandler = {props.detailedPictureHandler}
