@@ -24,3 +24,7 @@ We're all about open source! Thus you can find our apps on Github.
 Day2Day is a project of Adrien D. Ahlqvist (Armitage).
 
 Made with :heart: in beautiful Montreal
+
+---
+Codefactor Grade: 
+[![CodeFactor](https://www.codefactor.io/repository/github/armitage35/day2day.wallpaper/badge)](https://www.codefactor.io/repository/github/armitage35/day2day.wallpaper)
