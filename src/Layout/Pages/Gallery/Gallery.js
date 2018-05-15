@@ -8,11 +8,19 @@ const Gallery = (props) => {
 	let label;
 	let photoClass;
 
-	if (props.label !== undefined) { label = <p className='exploreLabel'>{props.label}</p> }
-	else { label = '' };
+	if (props.label !== undefined) {
+		label = <p className='exploreLabel'>{props.label}</p>;
+	}
+	else {
+		label = '';
+	};
 
-	if (props.label !== undefined) { photoClass = 'explorePhoto' }
-	else { photoClass = 'photo' };
+	if (props.label !== undefined) {
+		photoClass = 'explorePhoto';
+	}
+	else {
+		photoClass = 'photo';
+	};
 
 	if (props.unsplashPictures !== null) {
 		let pictures = props.unsplashPictures.map((photo, index) => {

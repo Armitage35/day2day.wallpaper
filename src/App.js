@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Layout from './Layout/Layout.js';
+import UnsplashOptions from './Keys/UnsplashOptions.js';
 
 const request = require('request');
 
@@ -12,7 +13,7 @@ class App extends Component {
 		activeCollection: null,
 		activeCollectionName: null,
 		activePicture: null,
-		activeView: 'explore',
+		activeView: 'explore', // the default view when coming
 	}
 
 	activeViewHandler = (event) => {
@@ -28,21 +29,15 @@ class App extends Component {
 		this.setState({ activeCollection: null, activeCollectionName: null });
 	}
 
-	unsplashOptions = {
-		method: 'GET',
-		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
-	};
-
 	activeBackdropHandler = () => {
 		let unsplashBackdrop,
 			backdropAuthor,
-			options = {
-				method: 'GET',
+			optionsForBackdrop = {
+				...UnsplashOptions,
 				url: 'https://api.unsplash.com/photos/random',
-				qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
 			};
 
-		request(options, function(error, response, body) {
+		request(optionsForBackdrop, function(error, response, body) {
 			if (error) throw new Error(error);
 
 			unsplashBackdrop = JSON.parse(body).urls.regular;
@@ -69,7 +64,7 @@ class App extends Component {
 	// handle unique (individual) picture
 	callUnsplashUniquePicture = (photoID) => {
 		const options = {
-			...this.unsplashOptions,
+			...UnsplashOptions,
 			url: 'https://api.unsplash.com/photos/' + photoID
 		};
 

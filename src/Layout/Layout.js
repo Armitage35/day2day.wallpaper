@@ -4,6 +4,7 @@ import Toolbar from './Toolbar/Toolbar.js';
 import Pages from './Pages/Pages.js';
 import Sidemenu from './Sidemenu/Sidemenu.js';
 import Spinner from '../UtilitiesComponents/Spinner.js';
+import UnsplashOptions from '../Keys/UnsplashOptions.js';
 import './Layout.css';
 
 const request = require('request');
@@ -25,13 +26,8 @@ class Layout extends Component {
 	popularCollectionsList;
 	unsplashUniquePicture;
 
-	unsplashOptions = {
-		method: 'GET',
-		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
-	};
-
 	callUnsplashFeaturedCollection = () => {
-		const options = { ...this.unsplashOptions,
+		const options = { ...UnsplashOptions,
 			url: 'https://api.unsplash.com/collections/featured'
 		};
 
@@ -53,22 +49,22 @@ class Layout extends Component {
 	}
 
 	optionsForRandomPictures = {
-		...this.unsplashOptions,
+		...UnsplashOptions,
 		qs: {
 			count: '20',
 			orientation: 'landscape',
-			...this.unsplashOptions.qs
+			...UnsplashOptions.qs
 		},
 		url: 'https://api.unsplash.com/photos/'
 	};
 
 
 	optionsForSpecificCollection = {
-		...this.unsplashOptions,
+		...UnsplashOptions,
 		qs: {
 			count: '20',
 			orientation: 'landscape',
-			...this.unsplashOptions.qs
+			...UnsplashOptions.qs
 		}
 	};
 
@@ -138,6 +134,8 @@ class Layout extends Component {
 							activeCollectionName = {this.props.activeCollectionName}
 							detailedCollectionHandler = {this.props.detailedCollectionHandler}
 							popularCollectionsList = {this.popularCollectionsList}
+							collectionName = {this.props.collectionName}
+
 						/>
 						<Pages
 							activeView = {this.props.activeView}

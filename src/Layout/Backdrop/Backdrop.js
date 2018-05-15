@@ -6,8 +6,7 @@ const Backdrop = (props) => {
 		<div className='backdrop'>
 			<img 
 				src={props.activeBackdrop} 
-				alt={props.backdropAuthor} 
-			/>
+				alt = { 'A picture by ' + props.backdropAuthor } />
 		</div>
 	);
 };
