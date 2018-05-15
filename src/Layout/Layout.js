@@ -138,7 +138,6 @@ class Layout extends Component {
 							activeCollectionName = {this.props.activeCollectionName}
 							detailedCollectionHandler = {this.props.detailedCollectionHandler}
 							popularCollectionsList = {this.popularCollectionsList}
-
 						/>
 						<Pages
 							activeView = {this.props.activeView}

@@ -25,7 +25,7 @@ class App extends Component {
 	}
 
 	resetActiveCollection = () => {
-		this.setState({ activeCollection: null });
+		this.setState({ activeCollection: null, activeCollectionName: null });
 	}
 
 	unsplashOptions = {

@@ -9,7 +9,7 @@ const PopularCollections = (props) => {
 	if (collectionList !== undefined) {
 		collectionList = collectionList.map((collection, key) => {
 			if (key < 4) {
-				return (<p key={key} className='popularCollectionsList' onClick={props.detailedCollectionHandler} id={collection[0]}>{collection[1]}</p>);
+				return (<p key={key} className='popularCollectionsList' onClick={props.detailedCollectionHandler} id={collection[0]} data-collection_name={collection[1]}>{collection[1]}</p>);
 			}
 			else { return null }
 		});

@@ -15,18 +15,18 @@ const Title = (props) => {
 		if (props.activeView === 'detailedPhoto') {
 			let pictureAuthor = props.pictureAuthorAvatar;
 
-			let style = {
+			let avatarStyle = {
 				backgroundImage: "url(" + pictureAuthor + ")"
 			};
 
 			return (
-				<div className='pictureAuthor' style={style}></div>
+				<div className='pictureAuthor' style={avatarStyle}></div>
 			);
 		}
 	};
 
 	if (props.activeView === 'gallery') {
-		props.activeCollectionName !== null ? title = props.activeCollectionName : title = props.activeCollectionName;
+		props.activeCollectionName !== null ? title = props.activeCollectionName : title = titleOptions[props.activeView];
 	}
 	else if (props.activeView !== 'detailedPhoto') {
 		title = titleOptions[props.activeView];
