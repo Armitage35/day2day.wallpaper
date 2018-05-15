@@ -26,7 +26,7 @@ const Sidemenu = (props) => {
 		}
 		else {
 			const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-			let transformedPicturePublicationDate = new Date(props.activePicture.created_at).toLocaleDateString('en-EN', dateOptions);
+			let transformedPicturePublicationDate = new Date(props.activePicture.created_at).toLocaleDateString('en-CA', dateOptions);
 
 			return (
 				<div className='sidemenu'>
@@ -37,9 +37,9 @@ const Sidemenu = (props) => {
 					/>
 					<PictureDetails
 						picturePublicationDate = {transformedPicturePublicationDate}
-						pictureDimensions = {props.activePicture.height + ' x ' + props.activePicture.width}
-						pictureViews = {props.activePicture.views}
-						pictureDownloads = {props.activePicture.downloads}
+						pictureDimensions = {(props.activePicture.height).toLocaleString('en-CA') + ' x ' + (props.activePicture.width).toLocaleString('en-CA')}
+						pictureViews = {(props.activePicture.views).toLocaleString('en-CA')}
+						pictureDownloads = {(props.activePicture.downloads).toLocaleString('en-CA')}
 						unsplashLink = {props.activePicture.user.links.html}
 					/>
 				</div>
