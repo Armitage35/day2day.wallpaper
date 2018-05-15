@@ -51,7 +51,7 @@ class Layout extends Component {
 	optionsForRandomPictures = {
 		...UnsplashOptions,
 		qs: {
-			count: '20',
+			per_page: '20',
 			orientation: 'landscape',
 			...UnsplashOptions.qs
 		},
