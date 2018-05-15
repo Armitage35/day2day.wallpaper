@@ -13,7 +13,8 @@ class App extends Component {
 		activeCollection: null,
 		activeCollectionName: null,
 		activePicture: null,
-		activeView: 'explore', // the default view when coming
+		activePictureDownloadLink: null,
+		activeView: 'explore', // the default view when first loading the app
 	}
 
 	activeViewHandler = (event) => {
@@ -26,7 +27,7 @@ class App extends Component {
 	}
 
 	resetActiveCollection = () => {
-		this.setState({ activeCollection: null, activeCollectionName: null });
+		this.setState({ activeCollection: null, activeCollectionName: null, activePictureDownloadLink: null });
 	}
 
 	activeBackdropHandler = () => {
@@ -63,18 +64,33 @@ class App extends Component {
 
 	// handle unique (individual) picture
 	callUnsplashUniquePicture = (photoID) => {
-		const options = {
+		const optionsForIndividualPicture = {
 			...UnsplashOptions,
 			url: 'https://api.unsplash.com/photos/' + photoID
 		};
 
-		request(options, this.callUnsplashUniquePictureCallback);
+		const optionsToGetPictureDownloadLink = {
+			...UnsplashOptions,
+			url: 'https://api.unsplash.com/photos/' + photoID + '/download',
+		};
+
+		// getting the picture's download link
+		request(optionsToGetPictureDownloadLink, this.callUnsplasPictureDownloadLink);
+
+		// getting every other picture's information
+		request(optionsForIndividualPicture, this.callUnsplashUniquePictureCallback);
 	};
 
 	callUnsplashUniquePictureCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
 		this.setState({ activePicture: JSON.parse(body) });
+	};
+
+	callUnsplasPictureDownloadLink = (error, response, body) => {
+		if (error) throw new Error(error);
+
+		this.setState({ activePictureDownloadLink: JSON.parse(body).url });
 	};
 
 	componentDidMount() {
@@ -90,6 +106,7 @@ class App extends Component {
 					activeCollection = {this.state.activeCollection}
 					activeCollectionName = {this.state.activeCollectionName}
 					activePicture = {this.state.activePicture}
+					activePictureDownloadLink = {this.state.activePictureDownloadLink}
 					backdropAuthor = {this.state.backdropAuthor}
 					detailedCollectionHandler = {this.detailedCollectionHandler}
 					detailedPictureHandler = {this.detailedPictureHandler}

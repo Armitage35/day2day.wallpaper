@@ -29,6 +29,7 @@ const Pages = (props) => {
 		case 'detailedPhoto':
 			return <PhotoDetails 
 				activePicture = {props.activePicture}
+				activePictureDownloadLink = {props.activePictureDownloadLink}
 			/>;
 		default:
 			return <Gallery />;

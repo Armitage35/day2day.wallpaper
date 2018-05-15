@@ -16,7 +16,7 @@ const PhotoDetails = (props) => {
 	}
 	else {
 		const downloadButton = () => {
-			return <a href={props.activePicture.links.download + '?utm_source=day2day.wallpaper&utm_medium=referral'} target='_blank'><button className={buttonClasses}> {DownloadIcon}</button></a>;
+			return <a href={props.activePictureDownloadLink} target='_blank'><button className={buttonClasses}> {DownloadIcon}</button></a>;
 		};
 
 		const backgroundStyle = {
