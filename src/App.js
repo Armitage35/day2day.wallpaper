@@ -1,41 +1,45 @@
 import React, { Component } from 'react';
 import './App.css';
 import Layout from './Layout/Layout.js';
+import UnsplashOptions from './Keys/UnsplashOptions.js';
 
-var request = require("request");
+const request = require('request');
 
 class App extends Component {
 
 	state = {
-		activeBackdrop: '',
-		backdropAuthor: '',
-		activeCollection: '',
+		activeBackdrop: null,
+		backdropAuthor: null,
+		activeCollection: null,
+		activeCollectionName: null,
 		activePicture: null,
-		activeView: 'explore',
+		activeView: 'explore', // the default view when coming
 	}
 
 	activeViewHandler = (event) => {
 		let activeView = this.state.activeView;
 		activeView = event.target.id;
 		this.setState({ activeView: activeView });
+		if (event.target.id === 'gallery') {
+			this.resetActiveCollection();
+		}
 	}
 
-	unsplashOptions = {
-		method: 'GET',
-		qs: { client_id: 'd9dbf001ba658ce6d8172a427b1a7a3e986aa970d038aade36ff7c54b05ffb0e' }
-	};
+	resetActiveCollection = () => {
+		this.setState({ activeCollection: null, activeCollectionName: null });
+	}
 
 	activeBackdropHandler = () => {
 		let unsplashBackdrop,
 			backdropAuthor,
-			options = {
-				method: 'GET',
+			optionsForBackdrop = {
+				...UnsplashOptions,
 				url: 'https://api.unsplash.com/photos/random',
-				qs: { client_id: '87d65f33bedf2944ee1146f5a30ff235a6b37b4faa403b0b877f02f4fbb36a40' }
 			};
 
-		request(options, function(error, response, body) {
+		request(optionsForBackdrop, function(error, response, body) {
 			if (error) throw new Error(error);
+
 			unsplashBackdrop = JSON.parse(body).urls.regular;
 			backdropAuthor = JSON.parse(body).user.name;
 			updateBackdrop();
@@ -52,10 +56,15 @@ class App extends Component {
 		this.callUnsplashUniquePicture(event.target.id);
 	}
 
+	detailedCollectionHandler = (event) => {
+		let collectionName = event.target.getAttribute('data-collection_name');
+		this.setState({ activeCollection: event.target.id, activeView: 'gallery', activeCollectionName: collectionName });
+	}
+
 	// handle unique (individual) picture
 	callUnsplashUniquePicture = (photoID) => {
 		const options = {
-			...this.unsplashOptions,
+			...UnsplashOptions,
 			url: 'https://api.unsplash.com/photos/' + photoID
 		};
 
@@ -65,7 +74,7 @@ class App extends Component {
 	callUnsplashUniquePictureCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
-		this.setState({activePicture: JSON.parse(body)});
+		this.setState({ activePicture: JSON.parse(body) });
 	};
 
 	componentDidMount() {
@@ -78,10 +87,13 @@ class App extends Component {
 				<Layout
 					activeBackdrop = {this.state.activeBackdrop}
 					activeView = {this.state.activeView}
+					activeCollection = {this.state.activeCollection}
+					activeCollectionName = {this.state.activeCollectionName}
 					activePicture = {this.state.activePicture}
 					backdropAuthor = {this.state.backdropAuthor}
-					viewHandler = {this.activeViewHandler}
+					detailedCollectionHandler = {this.detailedCollectionHandler}
 					detailedPictureHandler = {this.detailedPictureHandler}
+					viewHandler = {this.activeViewHandler}
 				/>
 			</div>
 		);

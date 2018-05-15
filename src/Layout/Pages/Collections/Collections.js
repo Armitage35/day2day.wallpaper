@@ -7,11 +7,11 @@ const Collections = (props) => {
 
 	let collections,
 		label;
-		
+
 	// Label handling for explore view
 	props.label !== undefined ? label = <p className='exploreLabel'>{props.label}</p> : label = '';
 
-	if (props.unsplashCollection === '') {
+	if (props.unsplashCollection === null) {
 		return <Spinner />;
 	}
 	else {
@@ -22,11 +22,12 @@ const Collections = (props) => {
 			return (
 				<Collection
 					collectionName = {collection.title}
-					float = {float}
 					cover = {collection.cover_photo.urls.small}
-					id = {collection.title.replace(/ /g,"_")}
-					topThumbnail = {collection.preview_photos[1].urls.thumb}
+					detailedCollectionHandler = {props.detailedCollectionHandler}
+					float = {float}
+					id = {collection.id}
 					bottomThumbnail = {collection.preview_photos[2].urls.thumb}
+					topThumbnail = {collection.preview_photos[1].urls.thumb}
 					key = {index}
 				/>
 			);
