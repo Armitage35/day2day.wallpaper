@@ -51,7 +51,7 @@ class Layout extends Component {
 	optionsForRandomPictures = {
 		...UnsplashOptions,
 		qs: {
-			count: '20',
+			per_page: '20',
 			orientation: 'landscape',
 			...UnsplashOptions.qs
 		},
@@ -140,6 +140,7 @@ class Layout extends Component {
 						<Pages
 							activeView = {this.props.activeView}
 							activePicture = {this.props.activePicture}
+							activePictureDownloadLink = {this.props.activePictureDownloadLink}
 							detailedPictureHandler = {this.props.detailedPictureHandler}
 							detailedCollectionHandler = {this.props.detailedCollectionHandler}
 							unsplashCollection = {this.state.unsplashCollection}
