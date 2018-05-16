@@ -1,15 +1,27 @@
 {
-  "short_name": "Day2Day.wallpaper",
-  "name": "Day2Day.wallpaper",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": "./index.html",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"short_name": "Day2Day.wallpaper",
+	"name": "Day2Day.wallpaper",
+	"version": "0.1",
+	"manifest_version": 2,
+	"icons": {
+		"16": "favicon.ico",
+		"48": "favicon.ico",
+		"128": "favicon.ico"
+	},
+	"permissions": [
+		"wallpaper"
+	],
+	"start_url": "./index.html",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff",
+	"browser_action": {
+		"default_popup": "index.html",
+		"default_title": "React Ext"
+	},
+	"app": {
+		"background": {
+			"scripts": ["background.js"]
+		}
+	}
 }
