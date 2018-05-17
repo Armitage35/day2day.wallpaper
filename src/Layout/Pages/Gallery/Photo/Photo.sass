@@ -1,0 +1,19 @@
+@import '../../../../App.sass'
+
+// Extends
+%photo 
+	@extend %backgroundImage
+	border: 2px white solid
+	display: grid
+	cursor: pointer
+
+// Classes
+.photo
+	@extend %photo
+	height: 250px
+	width: 300px
+
+.explorePhoto
+	@extend %photo
+	height: 125px
+	width: 150px

@@ -1,0 +1,22 @@
+@import '../../../App.sass'
+@import './PhotoButtons/uniteBttn.sass'
+
+// classes
+.PhotoDetails
+	@extend %pageContent-Contents
+	@extend %backgroundImage
+	height: 70vh
+	position: relative
+	font-family: $fontStack
+	box-shadow: #00000069 0px 3px 6px
+	
+.actionButtons
+	position: absolute
+	bottom: 0px
+	right: 0px //needs the parent to be position: relative in order for this to work
+	button
+		min-width: 42px
+		outline: none
+	
+button:nth-child(1)
+		border-right-width: 0px
