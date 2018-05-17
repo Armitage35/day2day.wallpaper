@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DownloadIcon from './PhotoButtons/icons/DownloadIcon.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 import './PhotoDetails.css';
+import FetchBlob from '../../../UtilitiesComponents/FetchBlob.js';
 
 class PhotoDetails extends Component {
 	constructor(props) {
@@ -16,7 +17,6 @@ class PhotoDetails extends Component {
 	}
 
 	setAsWallpaper() {
-		console.log('yolo');
 		window.chrome.wallpaper.setWallpaper({
 			url: this.props.activePictureDownloadLink,
 			layout: 'CENTER_CROPPED',
@@ -26,15 +26,12 @@ class PhotoDetails extends Component {
 
 	render() {
 		if (!this.state.loaded && this.props.activePicture !== null) {
-			fetch(this.props.activePicture.urls.regular).then(data => {
-				const response = new Response(data.body);
-				response.blob().then(blob => {
-					this.setState({
-						loaded: true,
-						imageBlob: URL.createObjectURL(blob)
-					});
+			FetchBlob(this.props.activePicture.urls.regular).then(blobURL => {
+				this.setState({
+					loaded: true,
+					imageBlob: blobURL
 				});
-			});
+			})
 		}
 
 		const buttonClasses = 'bttn-unite bttn-md bttn-primary';
