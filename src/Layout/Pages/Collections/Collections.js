@@ -17,7 +17,7 @@ const Collections = (props) => {
 	else {
 		collections = props.unsplashCollection.map((collection, index) => {
 			let float;
-			float = index === 4 && props.label !== undefined ? float = 'none' : float = 'left';
+			float = index === 4 && props.label === undefined ? float = 'none' : float = 'left';
 
 			return (
 				<Collection
