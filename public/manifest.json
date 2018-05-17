@@ -17,7 +17,7 @@
 	"background_color": "#ffffff",
 	"browser_action": {
 		"default_popup": "index.html",
-		"default_title": "React Ext"
+		"default_title": "Day2Day.wallpaper"
 	},
 	"app": {
 		"background": {
