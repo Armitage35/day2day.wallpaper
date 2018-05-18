@@ -51,7 +51,7 @@ class Layout extends Component {
 			}));
 
 			// Only take the first two since we never show more than that
-			for (let i = 0; i < 2; i++) {
+			for (let i = 1; i < 3; i++) {
 				blobPromises.push(FetchBlob(picture.preview_photos[i].urls.thumb).then(blob => {
 					picture.preview_photos[i].blob = blob;
 				}));

@@ -26,8 +26,8 @@ const Collections = (props) => {
 					detailedCollectionHandler = {props.detailedCollectionHandler}
 					float = {float}
 					id = {collection.id}
-					bottomThumbnail = {collection.preview_photos[1].blob}
-					topThumbnail = {collection.preview_photos[0].blob}
+					topThumbnail = {collection.preview_photos[1].blob}
+					bottomThumbnail = {collection.preview_photos[2].blob}
 					key = {index}
 				/>
 			);
