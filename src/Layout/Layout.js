@@ -5,6 +5,7 @@ import Pages from './Pages/Pages.js';
 import Sidemenu from './Sidemenu/Sidemenu.js';
 import Spinner from '../UtilitiesComponents/Spinner.js';
 import UnsplashOptions from '../Keys/UnsplashOptions.js';
+import FetchBlob from '../UtilitiesComponents/FetchBlob.js';
 import './Layout.css';
 
 const request = require('request');
@@ -39,13 +40,29 @@ class Layout extends Component {
 	// handle featured pictures
 	unsplashFeaturedCollectionCallback = (error, response, body) => {
 		if (error) throw new Error(error);
-		this.unsplashResponse = JSON.parse(body);
+		const unsplashCollection = JSON.parse(body);
 
-		this.popularCollectionsList = this.unsplashResponse.map(collection => {
+		this.popularCollectionsList = unsplashCollection.map(collection => {
 			return [collection.id, collection.title];
 		});
 
-		this.setState({ ready: true, unsplashCollection: this.unsplashResponse });
+		const blobPromises = [];
+		unsplashCollection.forEach(picture => {
+			blobPromises.push(FetchBlob(picture.cover_photo.urls.small).then(blob => {
+				picture.cover_photo.blob = blob;
+			}));
+
+			// Only take the first two since we never show more than that
+			for (let i = 0; i < 2; i++) {
+				blobPromises.push(FetchBlob(picture.preview_photos[i].urls.thumb).then(blob => {
+					picture.preview_photos[i].blob = blob;
+				}));
+			}
+		});
+
+		Promise.all(blobPromises).then(() => {
+			this.setState({ ready: true, unsplashCollection });
+		});
 	}
 
 	optionsForRandomPictures = {
@@ -87,8 +104,19 @@ class Layout extends Component {
 	unsplashRandomPicturesCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
-		this.unsplashResponse = JSON.parse(body);
-		this.setState({ ready: true, unsplashPictures: this.unsplashResponse });
+		const unsplashPictures = JSON.parse(body);
+
+		const blobPromises = [];
+		unsplashPictures.forEach(picture => {
+			blobPromises.push(FetchBlob(picture.urls.small).then(blob => {
+				picture.blob = blob;
+			}));
+		});
+
+		Promise.all(blobPromises).then(() => {
+			this.setState({ ready: true, unsplashPictures });
+		});
+
 	}
 
 	componentWillReceiveProps(next) {

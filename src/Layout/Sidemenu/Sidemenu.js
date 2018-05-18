@@ -33,7 +33,7 @@ const Sidemenu = (props) => {
 					<Title
 						activeView = {props.activeView}
 						pictureAuthor = {props.activePicture.user.name}
-						pictureAuthorAvatar = {props.activePicture.user.profile_image.large}
+						pictureAuthorAvatar = {props.activePicture.user.profile_image.blob}
 					/>
 					<PictureDetails
 						picturePublicationDate = {transformedPicturePublicationDate}
