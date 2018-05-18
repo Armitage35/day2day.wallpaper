@@ -23,9 +23,7 @@ class Layout extends Component {
 		unsplashPictures: null
 	};
 
-	unsplashResponse;
 	popularCollectionsList;
-	unsplashUniquePicture;
 
 	callUnsplashFeaturedCollection = () => {
 		const options = { ...UnsplashOptions,
