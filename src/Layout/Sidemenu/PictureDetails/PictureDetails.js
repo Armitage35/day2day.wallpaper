@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from '../../../hoc/Aux.js';
+import Aux from '../../../hoc/ReactAux.js';
 import './PictureDetails.css';
 
 const PictureDetails = (props) => {

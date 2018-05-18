@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Layout from './Layout/Layout.js';
 import UnsplashOptions from './Keys/UnsplashOptions.js';
+import FetchBlob from './UtilitiesComponents/FetchBlob';
 import ReactGA from 'react-ga';
 
 const request = require('request');
@@ -45,9 +46,13 @@ class App extends Component {
 		request(optionsForBackdrop, function(error, response, body) {
 			if (error) throw new Error(error);
 
-			unsplashBackdrop = JSON.parse(body).urls.regular;
-			backdropAuthor = JSON.parse(body).user.name;
-			updateBackdrop();
+			const backdropResponse = JSON.parse(body);
+
+			backdropAuthor = backdropResponse.user.name;
+			FetchBlob(backdropResponse.urls.regular).then(blob => {
+				unsplashBackdrop = blob;
+				updateBackdrop();
+			})
 		});
 
 		const updateBackdrop = () => {
@@ -89,7 +94,12 @@ class App extends Component {
 	callUnsplashUniquePictureCallback = (error, response, body) => {
 		if (error) throw new Error(error);
 
-		this.setState({ activePicture: JSON.parse(body) });
+		const activePicture = JSON.parse(body);
+
+		FetchBlob(activePicture.user.profile_image.large).then(blob => {
+			activePicture.user.profile_image.blob = blob;
+			this.setState({ activePicture });
+		});
 	};
 
 	callUnsplasPictureDownloadLink = (error, response, body) => {

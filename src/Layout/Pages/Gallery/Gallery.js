@@ -23,16 +23,14 @@ const Gallery = (props) => {
 		photoClass = 'photo';
 	};
 
-	props.activeView === 'gallery' ? photoSize = 'small' : photoSize = 'thumb';
-
 	if (props.unsplashPictures !== null) {
 		let pictures = props.unsplashPictures.map((photo, index) => {
 			let float;
 			float = index === props.unsplashPictures.length / 2 - 1 ? float = 'none' : float = 'left';
-			return <Photo 
+			return <Photo
 				cssClass = {photoClass}
 				float = {float}
-				url = {photo.urls[photoSize]}
+				url = {photo.blob}
 				key = {index}
 				photoId = {photo.id}
 				detailedPictureHandler = {props.detailedPictureHandler}

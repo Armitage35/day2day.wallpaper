@@ -19,9 +19,11 @@
 		"start": "yarn gulp sass && react-scripts start",
 		"build": "yarn gulp sass && react-scripts build",
 		"test": "xo && react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"deploy": "gh-pages -d build"
 	},
 	"devDependencies": {
+		"gh-pages": "^1.1.0",
 		"gulp": "^3.9.1"
 	},
 	"homepage": "http://armitage35.github.io/day2day.wallpaper"

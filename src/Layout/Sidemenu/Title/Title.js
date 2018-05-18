@@ -1,6 +1,6 @@
 import React from 'react';
 import './Title.css';
-import Aux from '../../../hoc/Aux.js';
+import Aux from '../../../hoc/ReactAux.js';
 
 const Title = (props) => {
 
