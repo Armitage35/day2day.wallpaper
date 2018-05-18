@@ -3,8 +3,11 @@ import './App.css';
 import Layout from './Layout/Layout.js';
 import UnsplashOptions from './Keys/UnsplashOptions.js';
 import FetchBlob from './UtilitiesComponents/FetchBlob';
+import ReactGA from 'react-ga';
 
 const request = require('request');
+
+ReactGA.initialize('UA-113962651-3');
 
 class App extends Component {
 
@@ -20,6 +23,7 @@ class App extends Component {
 
 	activeViewHandler = (event) => {
 		let activeView = this.state.activeView;
+		ReactGA.pageview(activeView);
 		activeView = event.target.id;
 		this.setState({ activeView: activeView });
 		if (event.target.id === 'gallery') {
@@ -57,6 +61,7 @@ class App extends Component {
 	}
 
 	detailedPictureHandler = (event) => {
+		ReactGA.pageview('detailed photo');
 		this.setState({ activeView: 'detailedPhoto', activePicture: null });
 
 		this.callUnsplashUniquePicture(event.target.id);
