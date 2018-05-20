@@ -1,10 +1,12 @@
+import request from 'request';
+
 export default function FetchBlob(url) {
 	return new Promise((resolve, reject) => {
-		fetch(url).then(data => {
-			const response = new Response(data.body);
+		request(url, {encoding: null}, (err, res, body) => {
+			const response = new Response(body);
 			response.blob().then(blob => {
 				resolve(URL.createObjectURL(blob));
 			}).catch(err => reject(err));
-		}).catch(err => reject(err));
+		});
 	});
 }
