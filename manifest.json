@@ -9,7 +9,9 @@
 		"128": "favicon.ico"
 	},
 	"permissions": [
-		"wallpaper"
+		"wallpaper",
+		"https://www.google-analytics.com/",
+		"storage"
 	],
 	"start_url": "./index.html",
 	"display": "standalone",
@@ -24,4 +26,5 @@
 			"scripts": ["background.js"]
 		}
 	}
+
 }
