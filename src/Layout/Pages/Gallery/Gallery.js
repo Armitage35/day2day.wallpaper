@@ -6,8 +6,7 @@ import './Gallery.css';
 const Gallery = (props) => {
 
 	let label,
-		photoClass,
-		photoSize;
+		photoClass;
 
 	if (props.label !== undefined) {
 		label = <p className='exploreLabel'>{props.label}</p>;
