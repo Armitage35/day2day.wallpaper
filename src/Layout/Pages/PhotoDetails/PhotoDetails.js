@@ -18,11 +18,18 @@ class PhotoDetails extends Component {
 	}
 
 	setAsWallpaper() {
+		// todo: add a condition based on 'navigator', if chrome OS then go. Else: display an error message
+		iziToast.info({
+			title: 'Please wait',
+			message: 'We are currently applying the picture to your computer, please wait',
+			position: 'center'
+		});
 		window.chrome.wallpaper.setWallpaper({
 			url: this.props.activePictureDownloadLink,
 			layout: 'CENTER_CROPPED',
 			filename: this.props.activePicture.user.name,
 		}, function() {
+			iziToast.destroy(); // removing existing iziToast
 			iziToast.success({
 				title: 'Done',
 				message: 'Your wallpaper has successfully been updated',
