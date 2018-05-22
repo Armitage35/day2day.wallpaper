@@ -3,6 +3,7 @@ import DownloadIcon from './PhotoButtons/icons/DownloadIcon.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 import './PhotoDetails.css';
 import FetchBlob from '../../../UtilitiesComponents/FetchBlob.js';
+import iziToast from 'izitoast';
 
 class PhotoDetails extends Component {
 	constructor(props) {
@@ -20,8 +21,13 @@ class PhotoDetails extends Component {
 		window.chrome.wallpaper.setWallpaper({
 			url: this.props.activePictureDownloadLink,
 			layout: 'CENTER_CROPPED',
-			filename: 'test_wallpaper'
-		}, function() {});
+			filename: this.props.activePicture.user.name,
+		}, function() {
+			iziToast.success({
+				title: 'Done',
+				message: 'Your wallpaper has successfully been updated',
+			});
+		});
 	}
 
 	render() {
