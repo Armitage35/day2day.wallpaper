@@ -17,14 +17,9 @@
 	"display": "standalone",
 	"theme_color": "#000000",
 	"background_color": "#ffffff",
-	"browser_action": {
-		"default_popup": "index.html",
-		"default_title": "Day2Day.wallpaper"
-	},
 	"app": {
 		"background": {
 			"scripts": ["background.js"]
 		}
 	}
-
 }
