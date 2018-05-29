@@ -98,14 +98,8 @@ class App extends Component {
 
 		FetchBlob(activePicture.user.profile_image.large).then(blob => {
 			activePicture.user.profile_image.blob = blob;
-			this.setState({ activePicture });
+			this.setState({ activePicture, activePictureDownloadLink: activePicture.links.html});
 		});
-	};
-
-	callUnsplasPictureDownloadLink = (error, response, body) => {
-		if (error) throw new Error(error);
-
-		this.setState({ activePictureDownloadLink: JSON.parse(body).url });
 	};
 
 	componentDidMount() {

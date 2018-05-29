@@ -57,6 +57,7 @@ class PhotoDetails extends Component {
 			return <Spinner />;
 		}
 		else {
+			// console.log(this.props.activePicture.links.html);
 			const downloadButton = () => {
 				return <a href={this.props.activePictureDownloadLink} target='_blank'><button className={buttonClasses}> {DownloadIcon}</button></a>;
 			};

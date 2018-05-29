@@ -13,7 +13,6 @@ xhr.onreadystatechange = function() {
 		var newStyle = document.createElement('style');
 		newStyle.appendChild(document.createTextNode("@font-face {font-family: Quicksand; font-weight: 400; src: url('" + myfontblob + "') format(woff);}"));
 		document.head.appendChild(newStyle);
-		console.log(myfontblob);
 	}
 };
 xhr.send();

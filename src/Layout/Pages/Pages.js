@@ -8,26 +8,26 @@ const Pages = (props) => {
 	switch (props.activeView) {
 		case 'collections':
 			return (
-				<Collections 
+				<Collections
 					unsplashCollection = {props.unsplashCollection}
 					detailedCollectionHandler = {props.detailedCollectionHandler}
 				/>
 			);
 		case 'gallery':
-			return <Gallery 
+			return <Gallery
 				activeView = {props.activeView}
 				unsplashPictures = {props.unsplashPictures}
 				detailedPictureHandler = {props.detailedPictureHandler}
 			/>;
 		case 'explore':
-			return <Explore 
+			return <Explore
 				unsplashCollection = {props.unsplashCollection}
 				unsplashPictures = {props.unsplashPictures}
 				detailedCollectionHandler = {props.detailedCollectionHandler}
 				detailedPictureHandler = {props.detailedPictureHandler}
 			/>;
 		case 'detailedPhoto':
-			return <PhotoDetails 
+			return <PhotoDetails
 				activePicture = {props.activePicture}
 				activePictureDownloadLink = {props.activePictureDownloadLink}
 			/>;
