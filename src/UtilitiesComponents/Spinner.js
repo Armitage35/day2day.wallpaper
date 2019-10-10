@@ -1,5 +1,5 @@
 import React from 'react';
-import './Spinner.css';
+import './Spinner.sass';
 
 const Spinner = () => {
 	return (
@@ -8,7 +8,7 @@ const Spinner = () => {
 			<div className="sk-cube2 sk-cube"></div>
 			<div className="sk-cube4 sk-cube"></div>
 			<div className="sk-cube3 sk-cube"></div>
-		</div>	
+		</div>
 	);
 };
 

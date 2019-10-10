@@ -1,6 +1,6 @@
 import React from 'react';
 import Collection from './Collection/Collection.js';
-import './Collections.css';
+import './Collections.sass';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 
 const Collections = (props) => {

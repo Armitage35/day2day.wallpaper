@@ -2,7 +2,7 @@ import React from 'react';
 import Title from './Title/Title.js';
 import PopularCollections from './PopularCollections/PopularCollections.js';
 import PictureDetails from './PictureDetails/PictureDetails.js';
-import './Sidemenu.css';
+import './Sidemenu.sass';
 import Spinner from '../../UtilitiesComponents/Spinner.js';
 
 const Sidemenu = (props) => {

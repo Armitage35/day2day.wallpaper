@@ -1,5 +1,5 @@
 import React from 'react';
-import './Title.css';
+import './Title.sass';
 import Aux from '../../../hoc/ReactAux.js';
 
 const Title = (props) => {

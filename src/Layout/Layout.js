@@ -6,7 +6,7 @@ import Sidemenu from './Sidemenu/Sidemenu.js';
 import Spinner from '../UtilitiesComponents/Spinner.js';
 import UnsplashOptions from '../Keys/UnsplashOptions.js';
 import FetchBlob from '../UtilitiesComponents/FetchBlob.js';
-import './Layout.css';
+import './Layout.sass';
 
 const request = require('request');
 

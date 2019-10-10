@@ -1,6 +1,5 @@
 import React from 'react';
-import './Photo.css';
-// import Aux from '../../../../hoc/Aux.js';
+import './Photo.sass';
 
 const Photo = ( props ) => {
 	const style = {

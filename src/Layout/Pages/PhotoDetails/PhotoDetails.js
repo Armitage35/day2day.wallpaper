@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DownloadIcon from './PhotoButtons/icons/DownloadIcon.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
-import './PhotoDetails.css';
+import './PhotoDetails.sass';
 import FetchBlob from '../../../UtilitiesComponents/FetchBlob.js';
 import iziToast from 'izitoast';
 

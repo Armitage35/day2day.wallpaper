@@ -1,17 +1,17 @@
 import React from 'react';
 import Collections from '../Collections/Collections.js';
 import Gallery from '../Gallery/Gallery.js';
-import './Explore.css';
+import './Explore.sass';
 
 const Explore = (props) => {
 	return (
 		<div className='Explore'>
-			<Collections 
+			<Collections
 				detailedCollectionHandler = {props.detailedCollectionHandler}
 				label = 'Collections'
 				unsplashCollection = {props.unsplashCollection}
 			/>
-			<Gallery 
+			<Gallery
 				label = 'Photos'
 				unsplashPictures = {props.unsplashPictures}
 				detailedPictureHandler = {props.detailedPictureHandler}
