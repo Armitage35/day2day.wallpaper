@@ -1,6 +1,7 @@
 {
 	"name": "day2day.wallpaper",
-	"version": "0.1.0",
+	"version": "1.0.1",
+	"author": "Adrien D. Ahlqvist",
 	"private": true,
 	"dependencies": {
 		"eslint-config-xo-react": "^0.16.0",
