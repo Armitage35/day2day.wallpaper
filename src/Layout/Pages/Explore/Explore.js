@@ -1,7 +1,7 @@
 import React from 'react';
 import Collections from '../Collections/Collections.js';
 import Gallery from '../Gallery/Gallery.js';
-import './Explore.sass';
+import './Explore.css';
 
 const Explore = (props) => {
 	return (

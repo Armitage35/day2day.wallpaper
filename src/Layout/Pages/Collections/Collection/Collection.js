@@ -1,5 +1,5 @@
 import React from 'react';
-import './Collection.sass';
+import './Collection.css';
 
 
 const Collection = (props) => {

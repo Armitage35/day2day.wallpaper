@@ -1,6 +1,6 @@
 import React from 'react';
 import Aux from '../../../hoc/ReactAux.js';
-import './PictureDetails.sass';
+import './PictureDetails.css';
 
 const PictureDetails = (props) => {
 	let referralLink = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Toolbar.sass';
+import './Toolbar.css';
 
 const Toolbar = (props) => {
 

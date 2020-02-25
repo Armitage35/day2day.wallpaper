@@ -1,5 +1,5 @@
 import React from 'react';
-import './Photo.sass';
+import './Photo.css';
 
 const Photo = ( props ) => {
 	const style = {

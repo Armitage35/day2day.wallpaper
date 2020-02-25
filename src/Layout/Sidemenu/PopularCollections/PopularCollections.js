@@ -1,6 +1,6 @@
 import React from 'react';
 import Aux from '../../../hoc/ReactAux.js';
-import './PopularCollections.sass';
+import './PopularCollections.css';
 
 const PopularCollections = (props) => {
 

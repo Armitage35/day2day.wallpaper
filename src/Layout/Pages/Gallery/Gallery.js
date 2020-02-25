@@ -1,7 +1,7 @@
 import React from 'react';
 import Photo from './Photo/Photo.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
-import './Gallery.sass';
+import './Gallery.css';
 
 const Gallery = (props) => {
 
