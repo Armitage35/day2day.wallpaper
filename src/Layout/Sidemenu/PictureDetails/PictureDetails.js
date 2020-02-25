@@ -1,13 +1,13 @@
 import React from 'react';
 import Aux from '../../../hoc/ReactAux.js';
-import './PictureDetails.sass';
+import './PictureDetails.css';
 
 const PictureDetails = (props) => {
 	let referralLink = () => {
 
 		let link = props.unsplashLink + '?utm_source=day2day.wallpaper&utm_medium=referral';
 
-		return <a href={link} target='_blank' className='referralLink'>See on Unsplash</a>;
+		return <a href={link} target='_blank' className='referralLink' rel='noopener noreferrer'>See on Unsplash</a>;
 	};
 
 	let values = [{

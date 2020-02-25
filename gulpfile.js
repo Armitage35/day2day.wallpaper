@@ -1,9 +1,7 @@
-'use strict';
-
-const gulp = require('gulp'),
-	sass = require('gulp-sass'),
-	sassPath = './src/**/*.sass';
-
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const del = require('del');
+const sassPath = './src/**/*.sass';
 
 gulp.task('sass', function() {
 	return gulp.src(sassPath)
@@ -11,8 +9,10 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('./src'));
 });
 
-gulp.task('sass:watch', function() {
-	gulp.watch(sassPath, ['sass']);
+gulp.task('clean', () => {
+    return del([
+        'css/main.css',
+    ]);
 });
 
-gulp.task('default', ['sass', 'sass:watch']);
+gulp.task('default', gulp.series(['clean', 'sass']));

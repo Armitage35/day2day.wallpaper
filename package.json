@@ -1,6 +1,7 @@
 {
 	"name": "day2day.wallpaper",
-	"version": "0.1.0",
+	"version": "1.2.0",
+	"author": "Adrien D. Ahlqvist",
 	"private": true,
 	"dependencies": {
 		"eslint-config-xo-react": "^0.16.0",
@@ -12,8 +13,7 @@
 		"react-dom": "^16.3.2",
 		"react-ga": "^2.5.2",
 		"react-scripts": "1.1.4",
-		"request": "^2.85.0",
-		"xo": "^0.20.3"
+		"request": "^2.85.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -23,6 +23,7 @@
 		"deploy": "gh-pages -d build"
 	},
 	"devDependencies": {
+		"xo": "^0.20.3",
 		"gh-pages": "^1.1.0",
 		"gulp": "^4.0.2"
 	},
