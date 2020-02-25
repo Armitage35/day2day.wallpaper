@@ -3,7 +3,6 @@ import DownloadIcon from './PhotoButtons/icons/DownloadIcon.js';
 import Spinner from '../../../UtilitiesComponents/Spinner.js';
 import './PhotoDetails.css';
 import FetchBlob from '../../../UtilitiesComponents/FetchBlob.js';
-import iziToast from 'izitoast';
 
 class PhotoDetails extends Component {
 	constructor(props) {
@@ -60,7 +59,7 @@ class PhotoDetails extends Component {
 		else {
 			// console.log(this.props.activePicture.links.html);
 			const downloadButton = () => {
-				return <a href={this.props.activePictureDownloadLink} target='_blank'><button className={buttonClasses}> {DownloadIcon}</button></a>;
+				return <a href={this.props.activePictureDownloadLink} target='_blank' rel='noopener noreferrer'><button className={buttonClasses}> {DownloadIcon}</button></a>;
 			};
 
 			const backgroundStyle = {
