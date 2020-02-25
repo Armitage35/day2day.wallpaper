@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Master.css';
 import Layout from './Layout/Layout.js';
 import UnsplashOptions from './Keys/UnsplashOptions.js';
 import FetchBlob from './UtilitiesComponents/FetchBlob';
